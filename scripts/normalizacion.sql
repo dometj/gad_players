@@ -1,5 +1,6 @@
 ﻿-- Este script permite pasar los datos utilizados en la función de distancia desde la tabla "jugador" a la tabla "jugador_norm" y los normaliza a una escala
 -- de 0 a 100
+-- SOLO SE EJECUTA UNA VEZ!!!
 
 BEGIN TRANSACTION;
 
@@ -81,3 +82,4 @@ SET
 	delantero = (delantero)*100 / 20;
 
 END TRANSACTION;
+
