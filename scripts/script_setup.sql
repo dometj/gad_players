@@ -27,6 +27,8 @@ mediapunta_izquierdo INTEGER,delantero INTEGER,FR INTEGER,TS_Rating FLOAT, FS_Ra
 habilidad_actual FLOAT,altura INTEGER,peso REAL,
 CONSTRAINT pk_jugador PRIMARY KEY(id));
 
+ALTER TABLE jugador OWNER TO proyecto_gad;
+
 --cargar el csv
 COPY jugador FROM '/home/lautaro/Documentos/UTN-FRCU/5to/GAD/tp_final/clean_players.csv' DELIMITER ',' CSV;
 
@@ -90,4 +92,9 @@ delantero INTEGER,
 jugador INTEGER,
 CONSTRAINT pk_jugador_norm PRIMARY KEY(id),
 CONSTRAINT fk_jugador FOREIGN KEY(jugador) REFERENCES jugador(id));
+
+ALTER TABLE jugador_norm OWNER TO proyecto_gad;
+
+-- Agrego una columna a la tabla jugador_norm para indicar los pivotes y el nivel de cada uno
+ALTER TABLE jugador_norm ADD COLUMN numero_pivote INT DEFAULT 0;
 
