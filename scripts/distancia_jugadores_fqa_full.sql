@@ -24,7 +24,7 @@ BEGIN
 	RETURN |/sumatoria; -- |/ hace la raiz cuadrada
 
 END
-$$ LANGUAGE "plpgSQL";
+$$ LANGUAGE "plpgsql";
 
 ALTER FUNCTION distancia_jugadores_fqa_full(real[], real[])
   OWNER TO proyecto_gad;
