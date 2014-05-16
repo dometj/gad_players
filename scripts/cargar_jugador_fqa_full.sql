@@ -64,3 +64,5 @@ SELECT cargar_jugador_fqa_full();
 
 -- borrar toda la tabla
 DELETE FROM jugador_fqa_full;
+
+COMMENT ON FUNCTION cargar_jugador_fqa_full() IS 'Calcula la firma fqa para cada elemento de la tabla jugador_norm, teniendo en cuenta todos los atributos de cada jugador.'
