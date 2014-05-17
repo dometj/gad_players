@@ -8,65 +8,6 @@
       <th>Club</th>
       <th>Posicion</th>
       <th>Edad</th>
-      <th>Aceleracion</th>
-      <th>Agresividad</th>
-      <th>Agilidad</th>
-      <th>Anticipacion</th>
-      <th>Balance</th>
-      <th>Valentia</th>
-      <th>Compostura</th>
-      <th>Concentracion</th>
-      <th>Corners</th>
-      <th>Creatividad</th>
-      <th>Centro</th>
-      <th>Decision</th>
-      <th>Determinacion</th>
-      <th>Gambeta</th>
-      <th>Remate</th>
-      <th>Primer toque</th>
-      <th>Instinto</th>
-      <th>Cabezazo</th>
-      <th>Influencia</th>
-      <th>Salto</th>
-      <th>Tiro lejano</th>
-      <th>Pase largo</th>
-      <th>Marca</th>
-      <th>Forma fisica natural</th>
-      <th>Juego sin pelota</th>
-      <th>Velocidad</th>
-      <th>Pases</th>
-      <th>Penales</th>
-      <th>Posicionamiento</th>
-      <th>Tiros libres</th>
-      <th>Resistencia</th>
-      <th>Fuerza</th>
-      <th>Entrada</th>
-      <th>Trabajo en equipo</th>
-      <th>Tecnica</th>
-      <th>Sacrificio</th>
-      <th>Porcentaje atajadas</th>
-      <th>Unique</th>
-      <th>Pierna derecha</th>
-      <th>Pierna izquierda</th>
-      <th>Arquero</th>
-      <th>Libero</th>
-      <th>Lateral derecho</th>
-      <th>Defensor central</th>
-      <th>Lateral izquierdo</th>
-      <th>Carrilero derecho</th>
-      <th>Carrilero izquierdo</th>
-      <th>Mediocampista defensivo</th>
-      <th>Mediocampista derecho</th>
-      <th>Mediocampista central</th>
-      <th>Mediocampista izquierdo</th>
-      <th>Mediapunta derecho</th>
-      <th>Mediapunta central</th>
-      <th>Mediapunta izquierdo</th>
-      <th>Delantero</th>
-      <th>Fr</th>
-      <th>Ts rating</th>
-      <th>Fs rating</th>
-      <th>Dc rating</th>
       <th>Habilidad actual</th>
       <th>Altura</th>
       <th>Peso</th>
@@ -84,71 +25,12 @@
         <td><%= jugador.club %></td>
         <td><%= jugador.posicion %></td>
         <td><%= jugador.edad %></td>
-        <td><%= jugador.aceleracion %></td>
-        <td><%= jugador.agresividad %></td>
-        <td><%= jugador.agilidad %></td>
-        <td><%= jugador.anticipacion %></td>
-        <td><%= jugador.balance %></td>
-        <td><%= jugador.valentia %></td>
-        <td><%= jugador.compostura %></td>
-        <td><%= jugador.concentracion %></td>
-        <td><%= jugador.corners %></td>
-        <td><%= jugador.creatividad %></td>
-        <td><%= jugador.centro %></td>
-        <td><%= jugador.decision %></td>
-        <td><%= jugador.determinacion %></td>
-        <td><%= jugador.gambeta %></td>
-        <td><%= jugador.remate %></td>
-        <td><%= jugador.primer_toque %></td>
-        <td><%= jugador.instinto %></td>
-        <td><%= jugador.cabezazo %></td>
-        <td><%= jugador.influencia %></td>
-        <td><%= jugador.salto %></td>
-        <td><%= jugador.tiro_lejano %></td>
-        <td><%= jugador.pase_largo %></td>
-        <td><%= jugador.marca %></td>
-        <td><%= jugador.forma_fisica_natural %></td>
-        <td><%= jugador.juego_sin_pelota %></td>
-        <td><%= jugador.velocidad %></td>
-        <td><%= jugador.pases %></td>
-        <td><%= jugador.penales %></td>
-        <td><%= jugador.posicionamiento %></td>
-        <td><%= jugador.tiros_libres %></td>
-        <td><%= jugador.resistencia %></td>
-        <td><%= jugador.fuerza %></td>
-        <td><%= jugador.entrada %></td>
-        <td><%= jugador.trabajo_en_equipo %></td>
-        <td><%= jugador.tecnica %></td>
-        <td><%= jugador.sacrificio %></td>
-        <td><%= jugador.porcentaje_atajadas %></td>
-        <td><%= jugador.unique_id %></td>
-        <td><%= jugador.pierna_derecha %></td>
-        <td><%= jugador.pierna_izquierda %></td>
-        <td><%= jugador.arquero %></td>
-        <td><%= jugador.libero %></td>
-        <td><%= jugador.lateral_derecho %></td>
-        <td><%= jugador.defensor_central %></td>
-        <td><%= jugador.lateral_izquierdo %></td>
-        <td><%= jugador.carrilero_derecho %></td>
-        <td><%= jugador.carrilero_izquierdo %></td>
-        <td><%= jugador.mediocampista_defensivo %></td>
-        <td><%= jugador.mediocampista_derecho %></td>
-        <td><%= jugador.mediocampista_central %></td>
-        <td><%= jugador.mediocampista_izquierdo %></td>
-        <td><%= jugador.mediapunta_derecho %></td>
-        <td><%= jugador.mediapunta_central %></td>
-        <td><%= jugador.mediapunta_izquierdo %></td>
-        <td><%= jugador.delantero %></td>
-        <td><%= jugador.fr %></td>
-        <td><%= jugador.ts_rating %></td>
-        <td><%= jugador.fs_rating %></td>
-        <td><%= jugador.dc_rating %></td>
         <td><%= jugador.habilidad_actual %></td>
         <td><%= jugador.altura %></td>
         <td><%= jugador.peso %></td>
         <td><%= link_to 'Show', jugador %></td>
         <td><%= link_to 'Edit', edit_jugador_path(jugador) %></td>
-        <td><%= link_to 'Destroy', jugador, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', jugador, method: :delete, data: { confirm: 'Estás seguro?' } %></td>
       </tr>
     <% end %>
   </tbody>
