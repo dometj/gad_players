@@ -1,4 +1,4 @@
-<h1>Listing jugador</h1>
+<h1>Manager 2.0</h1>
 
 <table>
   <thead>
@@ -26,8 +26,8 @@
         <td><%= jugador.posicion %></td>
         <td><%= jugador.edad %></td>
         <td><%= jugador.habilidad_actual %></td>
-        <td><%= jugador.altura %></td>
-        <td><%= jugador.peso %></td>
+        <td><%= jugador.altura %> cm</td>
+        <td><%= jugador.peso %> kg</td>
         <td><%= link_to 'Show', jugador %></td>
         <td><%= link_to 'Edit', edit_jugador_path(jugador) %></td>
         <td><%= link_to 'Destroy', jugador, method: :delete, data: { confirm: 'Estás seguro?' } %></td>
