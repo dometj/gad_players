@@ -1,0 +1,285 @@
+<%= form_for(@jugador) do |f| %>
+  <% if @jugador.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@jugador.errors.count, "error") %> prohibited this jugador from being saved:</h2>
+
+      <ul>
+      <% @jugador.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombre %><br>
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :pais %><br>
+    <%= f.text_field :pais %>
+  </div>
+  <div class="field">
+    <%= f.label :club %><br>
+    <%= f.text_field :club %>
+  </div>
+  <div class="field">
+    <%= f.label :posicion %><br>
+    <%= f.text_field :posicion %>
+  </div>
+  <div class="field">
+    <%= f.label :edad %><br>
+    <%= f.number_field :edad %>
+  </div>
+  <div class="field">
+    <%= f.label :aceleracion %><br>
+    <%= f.number_field :aceleracion %>
+  </div>
+  <div class="field">
+    <%= f.label :agresividad %><br>
+    <%= f.number_field :agresividad %>
+  </div>
+  <div class="field">
+    <%= f.label :agilidad %><br>
+    <%= f.number_field :agilidad %>
+  </div>
+  <div class="field">
+    <%= f.label :anticipacion %><br>
+    <%= f.number_field :anticipacion %>
+  </div>
+  <div class="field">
+    <%= f.label :balance %><br>
+    <%= f.number_field :balance %>
+  </div>
+  <div class="field">
+    <%= f.label :valentia %><br>
+    <%= f.number_field :valentia %>
+  </div>
+  <div class="field">
+    <%= f.label :compostura %><br>
+    <%= f.number_field :compostura %>
+  </div>
+  <div class="field">
+    <%= f.label :concentracion %><br>
+    <%= f.number_field :concentracion %>
+  </div>
+  <div class="field">
+    <%= f.label :corners %><br>
+    <%= f.number_field :corners %>
+  </div>
+  <div class="field">
+    <%= f.label :creatividad %><br>
+    <%= f.number_field :creatividad %>
+  </div>
+  <div class="field">
+    <%= f.label :centro %><br>
+    <%= f.number_field :centro %>
+  </div>
+  <div class="field">
+    <%= f.label :decision %><br>
+    <%= f.number_field :decision %>
+  </div>
+  <div class="field">
+    <%= f.label :determinacion %><br>
+    <%= f.number_field :determinacion %>
+  </div>
+  <div class="field">
+    <%= f.label :gambeta %><br>
+    <%= f.number_field :gambeta %>
+  </div>
+  <div class="field">
+    <%= f.label :remate %><br>
+    <%= f.number_field :remate %>
+  </div>
+  <div class="field">
+    <%= f.label :primer_toque %><br>
+    <%= f.number_field :primer_toque %>
+  </div>
+  <div class="field">
+    <%= f.label :instinto %><br>
+    <%= f.number_field :instinto %>
+  </div>
+  <div class="field">
+    <%= f.label :cabezazo %><br>
+    <%= f.number_field :cabezazo %>
+  </div>
+  <div class="field">
+    <%= f.label :influencia %><br>
+    <%= f.number_field :influencia %>
+  </div>
+  <div class="field">
+    <%= f.label :salto %><br>
+    <%= f.number_field :salto %>
+  </div>
+  <div class="field">
+    <%= f.label :tiro_lejano %><br>
+    <%= f.number_field :tiro_lejano %>
+  </div>
+  <div class="field">
+    <%= f.label :pase_largo %><br>
+    <%= f.number_field :pase_largo %>
+  </div>
+  <div class="field">
+    <%= f.label :marca %><br>
+    <%= f.number_field :marca %>
+  </div>
+  <div class="field">
+    <%= f.label :forma_fisica_natural %><br>
+    <%= f.number_field :forma_fisica_natural %>
+  </div>
+  <div class="field">
+    <%= f.label :juego_sin_pelota %><br>
+    <%= f.number_field :juego_sin_pelota %>
+  </div>
+  <div class="field">
+    <%= f.label :velocidad %><br>
+    <%= f.number_field :velocidad %>
+  </div>
+  <div class="field">
+    <%= f.label :pases %><br>
+    <%= f.number_field :pases %>
+  </div>
+  <div class="field">
+    <%= f.label :penales %><br>
+    <%= f.number_field :penales %>
+  </div>
+  <div class="field">
+    <%= f.label :posicionamiento %><br>
+    <%= f.number_field :posicionamiento %>
+  </div>
+  <div class="field">
+    <%= f.label :tiros_libres %><br>
+    <%= f.number_field :tiros_libres %>
+  </div>
+  <div class="field">
+    <%= f.label :resistencia %><br>
+    <%= f.number_field :resistencia %>
+  </div>
+  <div class="field">
+    <%= f.label :fuerza %><br>
+    <%= f.number_field :fuerza %>
+  </div>
+  <div class="field">
+    <%= f.label :entrada %><br>
+    <%= f.number_field :entrada %>
+  </div>
+  <div class="field">
+    <%= f.label :trabajo_en_equipo %><br>
+    <%= f.number_field :trabajo_en_equipo %>
+  </div>
+  <div class="field">
+    <%= f.label :tecnica %><br>
+    <%= f.number_field :tecnica %>
+  </div>
+  <div class="field">
+    <%= f.label :sacrificio %><br>
+    <%= f.number_field :sacrificio %>
+  </div>
+  <div class="field">
+    <%= f.label :porcentaje_atajadas %><br>
+    <%= f.text_field :porcentaje_atajadas %>
+  </div>
+  <div class="field">
+    <%= f.label :unique_id %><br>
+    <%= f.number_field :unique_id %>
+  </div>
+  <div class="field">
+    <%= f.label :pierna_derecha %><br>
+    <%= f.number_field :pierna_derecha %>
+  </div>
+  <div class="field">
+    <%= f.label :pierna_izquierda %><br>
+    <%= f.number_field :pierna_izquierda %>
+  </div>
+  <div class="field">
+    <%= f.label :arquero %><br>
+    <%= f.number_field :arquero %>
+  </div>
+  <div class="field">
+    <%= f.label :libero %><br>
+    <%= f.number_field :libero %>
+  </div>
+  <div class="field">
+    <%= f.label :lateral_derecho %><br>
+    <%= f.number_field :lateral_derecho %>
+  </div>
+  <div class="field">
+    <%= f.label :defensor_central %><br>
+    <%= f.number_field :defensor_central %>
+  </div>
+  <div class="field">
+    <%= f.label :lateral_izquierdo %><br>
+    <%= f.number_field :lateral_izquierdo %>
+  </div>
+  <div class="field">
+    <%= f.label :carrilero_derecho %><br>
+    <%= f.number_field :carrilero_derecho %>
+  </div>
+  <div class="field">
+    <%= f.label :carrilero_izquierdo %><br>
+    <%= f.number_field :carrilero_izquierdo %>
+  </div>
+  <div class="field">
+    <%= f.label :mediocampista_defensivo %><br>
+    <%= f.number_field :mediocampista_defensivo %>
+  </div>
+  <div class="field">
+    <%= f.label :mediocampista_derecho %><br>
+    <%= f.number_field :mediocampista_derecho %>
+  </div>
+  <div class="field">
+    <%= f.label :mediocampista_central %><br>
+    <%= f.number_field :mediocampista_central %>
+  </div>
+  <div class="field">
+    <%= f.label :mediocampista_izquierdo %><br>
+    <%= f.number_field :mediocampista_izquierdo %>
+  </div>
+  <div class="field">
+    <%= f.label :mediapunta_derecho %><br>
+    <%= f.number_field :mediapunta_derecho %>
+  </div>
+  <div class="field">
+    <%= f.label :mediapunta_central %><br>
+    <%= f.number_field :mediapunta_central %>
+  </div>
+  <div class="field">
+    <%= f.label :mediapunta_izquierdo %><br>
+    <%= f.number_field :mediapunta_izquierdo %>
+  </div>
+  <div class="field">
+    <%= f.label :delantero %><br>
+    <%= f.number_field :delantero %>
+  </div>
+  <div class="field">
+    <%= f.label :fr %><br>
+    <%= f.number_field :fr %>
+  </div>
+  <div class="field">
+    <%= f.label :ts_rating %><br>
+    <%= f.text_field :ts_rating %>
+  </div>
+  <div class="field">
+    <%= f.label :fs_rating %><br>
+    <%= f.text_field :fs_rating %>
+  </div>
+  <div class="field">
+    <%= f.label :dc_rating %><br>
+    <%= f.text_field :dc_rating %>
+  </div>
+  <div class="field">
+    <%= f.label :habilidad_actual %><br>
+    <%= f.text_field :habilidad_actual %>
+  </div>
+  <div class="field">
+    <%= f.label :altura %><br>
+    <%= f.number_field :altura %>
+  </div>
+  <div class="field">
+    <%= f.label :peso %><br>
+    <%= f.text_field :peso %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

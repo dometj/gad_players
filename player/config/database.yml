@@ -7,7 +7,7 @@ development:
   adapter: postgresql
   database: proyecto_gad
   username: proyecto_gad
-  password: 1234
+  password: gad
   host: localhost 
   encoding: UTF8
 
