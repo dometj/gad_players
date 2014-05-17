@@ -4,7 +4,11 @@ class JugadorController < ApplicationController
   # GET /jugador
   # GET /jugador.json
   def index
-    @jugador = Jugador.all
+    # muestro solamente 3 jugadores
+    # para que no se cuelgue
+    @jugador = Jugador.find 3,4,5
+    # antes mostraba a todos:
+    # @jugador = Jugador.all
   end
 
   # GET /jugador/1
