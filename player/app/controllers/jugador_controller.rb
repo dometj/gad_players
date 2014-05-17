@@ -4,11 +4,13 @@ class JugadorController < ApplicationController
   # GET /jugador
   # GET /jugador.json
   def index
-    # muestro solamente 3 jugadores
-    # para que no se cuelgue
+    
+  end
+  
+  # GET /jugador/search
+  def search
+    # Muestro 3 jugadores provisorios
     @jugador = Jugador.find 3,4,5
-    # antes mostraba a todos:
-    # @jugador = Jugador.all
   end
 
   # GET /jugador/1
@@ -74,5 +76,10 @@ class JugadorController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def jugador_params
       params.require(:jugador).permit(:nombre, :pais, :club, :posicion, :edad, :aceleracion, :agresividad, :agilidad, :anticipacion, :balance, :valentia, :compostura, :concentracion, :corners, :creatividad, :centro, :decision, :determinacion, :gambeta, :remate, :primer_toque, :instinto, :cabezazo, :influencia, :salto, :tiro_lejano, :pase_largo, :marca, :forma_fisica_natural, :juego_sin_pelota, :velocidad, :pases, :penales, :posicionamiento, :tiros_libres, :resistencia, :fuerza, :entrada, :trabajo_en_equipo, :tecnica, :sacrificio, :porcentaje_atajadas, :unique_id, :pierna_derecha, :pierna_izquierda, :arquero, :libero, :lateral_derecho, :defensor_central, :lateral_izquierdo, :carrilero_derecho, :carrilero_izquierdo, :mediocampista_defensivo, :mediocampista_derecho, :mediocampista_central, :mediocampista_izquierdo, :mediapunta_derecho, :mediapunta_central, :mediapunta_izquierdo, :delantero, :fr, :ts_rating, :fs_rating, :dc_rating, :habilidad_actual, :altura, :peso)
+    end
+    
+    # Parseo los parametros de GET jugador/search/:name
+    def search_params
+      # Configurar acá la variable params
     end
 end

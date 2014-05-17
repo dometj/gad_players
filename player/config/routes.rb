@@ -1,5 +1,7 @@
 Player::Application.routes.draw do
   resources :jugador
+  
+  get 'jugador/search/:name', to: 'jugador#search', as: 'search_jugador'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
