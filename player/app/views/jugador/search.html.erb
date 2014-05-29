@@ -1,43 +1,87 @@
-<h1>playerbase</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Pais</th>
-      <th>Club</th>
-      <th>Posicion</th>
-      <th>Edad</th>
-      <th>Habilidad actual</th>
-      <th>Altura</th>
-      <th>Peso</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @jugador.each do |jugador| %>
-      <tr>
-        <td><%= jugador.nombre %></td>
-        <td><%= jugador.pais %></td>
-        <td><%= jugador.club %></td>
-        <td><%= jugador.posicion %></td>
-        <td><%= jugador.edad %></td>
-        <td><%= jugador.habilidad_actual %></td>
-        <td><%= jugador.altura %> cm</td>
-        <td><%= jugador.peso %> kg</td>
-        <td>Similars</td>
-        <td><%= link_to 'Show', jugador %></td>
-        <td><%= link_to 'Edit', edit_jugador_path(jugador) %></td>
-        <td><%= link_to 'Destroy', jugador, method: :delete, data: { confirm: 'Estás seguro?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Jugador', new_jugador_path %>
+<div class="container-fluid">
+	<div class="row">
+		<!-- Esta fila muestra el logo, un input para búsquedas por nombre con su botón y el botón para las opciones avanzadas -->
+		<div class="col-md-2 col-sm-3 col-xs-12">
+			<center>
+				<%= image_tag('playerbase.png',width: '150') %>
+			</center>
+		</div>
+		<div class="col-md-7 col-sm-8 col-xs-12">
+		  	<div class="input-group">
+			  <input type="text" class="form-control" id="test_query">
+			  <span class="input-group-btn">
+				<%= link_to search_jugador_path('test_name'), class: 'btn btn-primary' do %>
+				    <span class="glyphicon glyphicon-search"></span>
+				<% end %>
+			  </span>
+			</div>
+		</div>
+		<div class="col-md-1">
+			<button type="button" class="btn btn-default" data-toggle="collapse" data-target="#advanced_search_collapsable">
+				<span class="glyphicon glyphicon-screenshot icon-size-large"></span>
+			    <span class="glyphicon glyphicon-chevron-down"></span>
+			</button>
+		</div>
+	</div>
+	<div class="row">
+		<!-- Esta fila mostrará las opciones avanzadas -->
+		<div class="col-md-12">
+			<div id="advanced_search_collapsable" class="collapse">
+				<div class="row">
+					<div class="col-md-4">
+						Velocidad: <input type="text" class="form-control" id="advanced1">
+						Agresividad: <input type="text" class="form-control" id="advanced1">
+						Agilidad: <input type="text" class="form-control" id="advanced1">
+						Anticipación: <input type="text" class="form-control" id="advanced1">
+					</div>
+					<div class="col-md-4">
+						Velocidad: <input type="text" class="form-control" id="advanced1">
+						Agresividad: <input type="text" class="form-control" id="advanced1">
+						Agilidad: <input type="text" class="form-control" id="advanced1">
+						Anticipación: <input type="text" class="form-control" id="advanced1">
+					</div>
+					<div class="col-md-4">
+						Velocidad: <input type="text" class="form-control" id="advanced1">
+						Agresividad: <input type="text" class="form-control" id="advanced1">
+						Agilidad: <input type="text" class="form-control" id="advanced1">
+						Anticipación: <input type="text" class="form-control" id="advanced1">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<!-- Esta fila muestra los resultados -->
+		<table>
+		  <thead>
+		    <tr class="row">
+		      <th class="col-md-3">Nombre</th>
+		      <th class="col-md-1">Pais</th>
+		      <th class="col-md-2">Club</th>
+		      <th class="col-md-2">Posicion</th>
+		      <th class="col-md-1">Edad</th>
+		      <th class="col-md-1">Habilidad</th>
+		      <th class="col-md-1">Altura</th>
+		      <th class="col-md-1">Peso</th>
+		    </tr>
+		  </thead>
+		
+		  <tbody>
+		    <% @jugador.each do |jugador| %>
+		      <tr class="row">
+		        <td class="col-md-3"><%= jugador.nombre %></td>
+		        <td class="col-md-1"><%= jugador.pais %></td>
+		        <td class="col-md-2"><%= jugador.club %></td>
+		        <td class="col-md-2"><%= jugador.posicion %></td>
+		        <td class="col-md-1"><%= jugador.edad %></td>
+		        <td class="col-md-1"><%= jugador.habilidad_actual %></td>
+		        <td class="col-md-1"><%= jugador.altura %> cm</td>
+		        <td class="col-md-1"><%= jugador.peso %> kg</td>
+		      </tr>
+		    <% end %>
+		  </tbody>
+		</table>
+	</div>
+</div>

@@ -7,7 +7,7 @@ class JugadorController < ApplicationController
     
   end
   
-  # GET /jugador/search
+  # GET /jugador/search/:query_name
   def search
     # Muestro 3 jugadores provisorios
     @jugador = Jugador.find 3,4,5

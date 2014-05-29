@@ -1,1 +1,21 @@
-<%= link_to 'Go!', search_jugador_path('test_name')  %>
+<center>
+	<%= image_tag 'playerbase.png'%>
+	</br>
+	</br>
+	<div class="container">
+		<div class="row">
+			<center>
+			  	<div class="col-md-8 no-float">
+				  	<div class="input-group">
+					  <input type="text" class="form-control" id="search_query_name">
+					  <span class="input-group-btn">
+						<%= link_to search_jugador_path('test_name'), class: 'btn btn-primary' do %>
+						    <i class="glyphicon glyphicon-search"></i>
+						<% end %>
+					  </span>
+					</div>
+				</div>
+			</center>
+		</div>
+	</div>
+</center>
