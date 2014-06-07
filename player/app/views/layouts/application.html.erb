@@ -8,22 +8,23 @@
 </head>
 <body>
 	<div id="head" class="container-fluid">
+		<!-- Fila que contiene el botón de configuración (dropdown) -->
 		<div class="row">
-			<div class="col-md-1 col-md-offset-11 col-sm-2 col-sm-offset-10 col-xs-3 col-xs-offset-9">
+			<div class="col-xs-2 col-xs-offset-10">
 				<div class="navbar-right">
-				<ul class="nav nav-pills">
-				  <li class="dropdown">
-				    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-				      <span class="glyphicon glyphicon-cog icon-size-large"></span>
-				      <span class="caret"></span>
-				    </a>
-				    <ul class="dropdown-menu">
-				      <li>Insertar Jugador</li>
-				      <li>Configuración</li>
-				      <li>About us</li>
-				    </ul>
-				  </li>
-				</ul>
+					<ul class="nav nav-pills">
+					  <li class="dropdown">
+					    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+					      <span class="glyphicon glyphicon-cog icon-size-large"></span>
+					      <span class="caret"></span>
+					    </a>
+					    <ul class="dropdown-menu">
+					      <li>Insertar Jugador</li>
+					      <li>Configuración</li>
+					      <li>About us</li>
+					    </ul>
+					  </li>
+					</ul>
 				</div>
 			</div>
 		</div>
@@ -33,10 +34,15 @@
 	</div>
 	<div id="footer" class="footer">
 		<div class="container">
-			<center>
-			    <%= link_to (image_tag('playerbase.png',width: '100')), 'jugador/about_us'  %>
-				powered by <a href="http://rubyonrails.org" target="_blank">RoR</a>
-			</center>
+			<!-- Fila que contiene el párrafo de footer (imagen y texto) -->
+			<div class="row">
+				<center>
+				    <small class="text-muted">
+				    	<%= link_to (image_tag('playerbase.png',width: '100')), 'jugador/about_us'  %>
+						powered by <a href="http://rubyonrails.org" target="_blank" class="text-danger">RoR</a>
+					</small>
+				</center>
+			</div>
 		</div>
 	</div>
 </body>

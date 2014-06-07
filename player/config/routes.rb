@@ -1,7 +1,14 @@
 Player::Application.routes.draw do
+  
+  # Ruta para búsquedas por nombre
+  get 'jugador/search', to: 'jugador#search', as: 'jugador_search'
+
+  # Ruta para búsquedas por similitud
+  post 'jugador/search', to: 'jugador#search'
+  
+  # Rutas automáticas para jugador
   resources :jugador
   
-  get 'jugador/search/:query_name', to: 'jugador#search', as: 'search_jugador'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

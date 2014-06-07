@@ -7,10 +7,18 @@ class JugadorController < ApplicationController
     
   end
   
-  # GET /jugador/search/:query_name
+  # GET /jugador/search para búsquedas por nombre
+  # POST /jugador/search para búsquedas por similitud
   def search
-    # Muestro 3 jugadores provisorios
-    @jugador = Jugador.find 3,4,5
+    # Seteo la consulta por nombre
+    @query_name = params[:query_name]
+    # TODO deberíamos tener en cuenta sólo letras y separar el string de consulta por los espacios
+    # Busco jugadores que contengan dicho string como substring (no case sensitive)
+    if @query_name == '' or @query_name.length < 3 #TODO controlar esto en las validaciones
+      # TODO Lo ideal sería mandar la respuesta vacía explicando
+      @query_name = 'abcd'
+    end
+      @jugador = Jugador.where 'nombre ~* ?', @query_name
   end
 
   # GET /jugador/1

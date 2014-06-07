@@ -1,21 +1,40 @@
-<center>
-	<%= image_tag 'playerbase.png'%>
-	</br>
-	</br>
-	<div class="container">
-		<div class="row">
-			<center>
-			  	<div class="col-md-8 no-float">
-				  	<div class="input-group">
-					  <input type="text" class="form-control" id="search_query_name">
-					  <span class="input-group-btn">
-						<%= link_to search_jugador_path('test_name'), class: 'btn btn-primary' do %>
-						    <i class="glyphicon glyphicon-search"></i>
+</br>
+</br>
+</br>
+<div class="container">
+	<!-- Fila que contiene la imagen principal -->
+	<div class="row">
+		<center>
+			<%= image_tag 'playerbase.png', class: 'col-xs-7 no-float'%>
+		</center>
+	</div>
+</div>
+</br>
+</br>
+<div class="container">
+	<%= form_tag jugador_search_path, method: "get" do %>
+		<center>
+			<!-- Fila que contiene el input -->
+			<div class="row">
+			  	<div class="col-xs-8 no-float">
+					<%= text_field_tag :query_name, nil, class: 'form-control' %>
+				</div>
+			</div>
+			</br>
+			<!-- Fila que contiene la fila de los botones de búsqueda -->
+			<div class="row" style="margin-bottom:120px;">
+				<div class="col-xs-7 no-float">
+					<!-- Fila que contiene los botones de búsqueda -->
+					<div class="row">
+						<%= button_tag type: 'submit', class: 'col-xs-2 col-xs-offset-3 btn btn-primary', data:{toggle:'tooltip', placement:'bottom'}, title: 'Buscar!' do %>						
+						    <i class="glyphicon glyphicon-search icon-size-large"></i>
 						<% end %>
-					  </span>
+						<%= link_to jugador_search_path, class: 'col-xs-2 col-xs-offset-2 btn btn-success', data:{toggle:'tooltip', placement:'bottom'}, title: 'Buscar por similitud!' do %>
+						    <i class="glyphicon glyphicon-screenshot icon-size-large"></i>
+						<% end %>
 					</div>
 				</div>
-			</center>
-		</div>
-	</div>
-</center>
+			</div>
+		</center>
+	<% end %>
+</div>

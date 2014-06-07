@@ -9,21 +9,21 @@
 //$light-orange: #ff8c00;
 //$navbar-default-color: $light-orange;
 
-// Agrego padding abajo para que el footer no tape el contenido de las páginas
-body { 
-	padding-bottom: 70px;
-}
+// Seteo esta variable para hacer que las navbar sean no-responsive
+$grid-float-breakpoint: 0px; 
 
 // Import bootstraps scss
 @import "bootstrap";
+
+// Seteo el width de los .container para que sean no-responsive
+.container {
+	width: 769px !important;
+}
 
 // SASS here
 
 // Clase footer, para definición del footer
 .footer { 
-  position: absolute;
-  bottom: 0;
-  width: 100%;
   height: 60px;
 }
 
