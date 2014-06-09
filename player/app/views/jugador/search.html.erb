@@ -68,7 +68,7 @@
 	<div class="row">
 		  <div id="resultados">
 			<% if @jugador.empty? %>
-			<%= render "sin_resultados" %>
+			<%= render "error_message", {message: 'No encontramos jugadores que coincidan con tu consulta. Por favor, revisá si no tipeaste mal.'} %>
 			<% else %>
 			<%= render "lista" %>
 			<% end %>
