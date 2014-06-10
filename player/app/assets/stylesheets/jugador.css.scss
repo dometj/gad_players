@@ -36,3 +36,8 @@ $grid-float-breakpoint: 0px;
 .icon-size-large {
 	font-size:20px;
 }
+
+// Clase para agregar un margen inferior previo al footer (usar en páginas de muy poca height)
+.margen-inferior-footer {
+	margin-bottom: 200px;
+}
