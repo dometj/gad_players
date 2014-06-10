@@ -24,7 +24,7 @@
 	    <div id="jugador_details_collapsable_<%= jugador.id %>" class="panel-collapse collapse">
 	      <div class="panel-body">
 	        <!-- Renderizo el detalle de los jugadores -->
-	        <%= render "show_details" %>
+	        <%= render "show_details", {jugador: jugador} %>
 	      </div>
 	    </div>
 	  </div>
