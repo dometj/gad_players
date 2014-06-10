@@ -33,15 +33,15 @@ BEGIN
 				IF (i > 1) THEN -- si ya selleccione algún pivote
 					FOR k IN 1..array_length(pivotes, 1) LOOP -- por cada uno de los pivotes anteriores
 						-- calculo la diferencia entre las firmas del par respecto de los pivotes anteriores
-						distancias := array_append(distancias, (distancia_jugadores(pivotes[k][1:cantidad_atributos],
+						distancias := array_append(distancias, (distancia_jugadores_fqa_full(pivotes[k][1:cantidad_atributos],
 								pares[j][1:cantidad_atributos]) -
-								distancia_jugadores(pivotes[k][1:cantidad_atributos],
+								distancia_jugadores_fqa_full(pivotes[k][1:cantidad_atributos],
 								pares[j+a][1:cantidad_atributos])));
 					END LOOP;
 				END IF;
 				-- calculo la diferencia entre las firmas del par respecto del potencial pivote
-				distancias := array_append(distancias, (distancia_jugadores(jugador.atributos, pares[j][1:cantidad_atributos])
-							- distancia_jugadores(jugador.atributos, pares[j+a][1:cantidad_atributos])));
+				distancias := array_append(distancias, (distancia_jugadores_fqa_full(jugador.atributos, pares[j][1:cantidad_atributos])
+							- distancia_jugadores_fqa_full(jugador.atributos, pares[j+a][1:cantidad_atributos])));
 				-- sumo la distancia máxima entre las firmas del par
 				suma_distancias = suma_distancias + maximo(distancias::NUMERIC[]); 
 				distancias := '{}';
