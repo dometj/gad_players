@@ -98,3 +98,36 @@ ALTER TABLE jugador_norm OWNER TO proyecto_gad;
 -- Agrego una columna a la tabla jugador_norm para indicar los pivotes y el nivel de cada uno
 ALTER TABLE jugador_norm ADD COLUMN numero_pivote INT DEFAULT 0;
 
+-- Crea la tabla que contiene las firmas de los jugadores
+CREATE TABLE jugador_fqa_full
+(
+  pivote1 real,
+  pivote2 real,
+  pivote3 real,
+  pivote4 real,
+  pivote5 real,
+  pivote6 real,
+  pivote7 real,
+  pivote8 real,
+  pivote9 real,
+  pivote10 real,
+  pivote11 real,
+  pivote12 real,
+  pivote13 real,
+  pivote14 real,
+  pivote15 real,
+  pivote16 real,
+  pivote17 real,
+  jugador_norm integer,
+  id serial NOT NULL,
+  pivote18 real,
+  CONSTRAINT pk_jugador_fqa_full PRIMARY KEY (id),
+  CONSTRAINT fk_jugador_norm FOREIGN KEY (jugador_norm)
+      REFERENCES jugador (id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE jugador_fqa_full
+  OWNER TO proyecto_gad;
