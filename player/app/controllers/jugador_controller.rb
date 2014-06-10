@@ -1,6 +1,9 @@
 class JugadorController < ApplicationController
   before_action :set_jugador, only: [:show, :edit, :update, :destroy]
 
+  WARNING_MAS_CARACTERES_Y_LETRAS = 'Por favor ingresá una consulta con más de 2 caracteres y asegurate de utilizar sólo letras.'
+  WARNING_SIN_RESULTADOS = 'No encontramos jugadores que coincidan con tu consulta. Por favor, revisá si no tipeaste mal.'
+
   # GET /jugador
   # GET /jugador.json
   def index
@@ -10,15 +13,23 @@ class JugadorController < ApplicationController
   # GET /jugador/search para búsquedas por nombre
   # POST /jugador/search para búsquedas por similitud
   def search
+    # Mensaje de error en nil
+    @warning_message = nil
     # Seteo la consulta por nombre
-    @query_name = params[:query_name]
-    # TODO deberíamos tener en cuenta sólo letras y separar el string de consulta por los espacios
-    # Busco jugadores que contengan dicho string como substring (no case sensitive)
-    if @query_name == '' or @query_name.length < 3 #TODO controlar esto en las validaciones
-      # TODO Lo ideal sería mandar la respuesta vacía explicando
-      @query_name = 'abcd'
+    @query_name = search_params
+    # TODO controlar esto en las validaciones
+    # Separo el string en palabras que tengan más de 2 letras, dejando sólamente letras
+    querys = @query_name.scan(/[a-zA-Z][a-zA-Z][a-zA-Z]+/)
+    if querys.empty?
+      # O no ingresó nada o ingresó cualquier cosa menos letras
+      @warning_message = WARNING_MAS_CARACTERES_Y_LETRAS
+    else
+      # Busco jugadores por nombre
+      @jugador = search_by_name querys
+      if @jugador.empty?
+        @warning_message = WARNING_SIN_RESULTADOS
+      end
     end
-      @jugador = Jugador.where 'nombre ~* ?', @query_name
   end
 
   # GET /jugador/1
@@ -88,6 +99,19 @@ class JugadorController < ApplicationController
     
     # Parseo los parametros de GET jugador/search/:name
     def search_params
-      # Configurar acá la variable params
+      # TODO Configurar acá la variable params
+      params[:query_name]
+    end
+
+    # Búsqueda por nombre que contengan dicho string como substring (no case sensitive)
+    def search_by_name querys
+      # Inicializo la expresión regular de consulta
+      query_regexp = ''
+      # Construyo la expresión regular de consulta
+      querys.each do |query_name|
+        query_regexp += '(?=.*'+query_name+')' 
+      end
+      # Busco jugadores que cuyo nombre cumpla con la expresión regular (no case sensitive)
+      Jugador.where 'nombre ~* ?', query_regexp
     end
 end
