@@ -1,0 +1,337 @@
+<%= form_tag jugador_search_path, method: "post", class: "form-horizontal" do %>
+	<div class="row">
+		<div class="col-xs-3">
+			<div class="form-group">
+				<small>
+					<label for="edad_id" class="col-xs-7 control-label">Edad:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm", id: "edad_id" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<small>
+					<label for="" class="col-xs-7 control-label">Aceleración:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<small>
+					<label for="" class="col-xs-7 control-label">Agresividad:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<small>
+					<label for="" class="col-xs-7 control-label">Agilidad:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<small>
+					<label for="" class="col-xs-7 control-label">Balance:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<small>
+					<label for="" class="col-xs-7 control-label">Valentía:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<small>
+					<label for="" class="col-xs-7 control-label">Compostura:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<small>
+					<label for="" class="col-xs-7 control-label">Concentración:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<small>
+					<label for="" class="col-xs-7 control-label">Corners:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<small>
+					<label for="" class="col-xs-7 control-label">Instinto:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm" %>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-3">
+			<div class="form-group">
+				<small>
+					<label for="" class="col-xs-7 control-label">Cabezazo:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<small>
+					<label for="" class="col-xs-7 control-label">Influencia:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<small>
+					<label for="" class="col-xs-7 control-label">Salto:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<small>
+					<label for="" class="col-xs-7 control-label">Tiro lejano:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<small>
+					<label for="" class="col-xs-7 control-label">Pase largo:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<small>
+					<label for="" class="col-xs-7 control-label">Marca:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<small>
+					<label for="" class="col-xs-7 control-label">Forma física:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<small>
+					<label for="" class="col-xs-7 control-label">Juego sin pelota:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<small>
+					<label for="" class="col-xs-7 control-label">Velocidad:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<small>
+					<label for="" class="col-xs-7 control-label">Pases:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm" %>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-3">
+			<div class="form-group">
+				<small>
+					<label for="" class="col-xs-7 control-label">Anticipación:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<small>
+					<label for="" class="col-xs-7 control-label">Penales:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<small>
+					<label for="" class="col-xs-7 control-label">Posicionamiento:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<small>
+					<label for="" class="col-xs-7 control-label">Tiros libres:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<small>
+					<label for="" class="col-xs-7 control-label">Resistencia:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<small>
+					<label for="" class="col-xs-7 control-label">Fuerza:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<small>
+					<label for="" class="col-xs-7 control-label">Entrada:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<small>
+					<label for="" class="col-xs-7 control-label">Trabajo en equipo:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<small>
+					<label for="" class="col-xs-7 control-label">Técnica:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<small>
+					<label for="" class="col-xs-7 control-label">Creatividad:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm" %>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-3">
+			<div class="form-group">
+				<small>
+					<label for="" class="col-xs-7 control-label">Centro:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<small>
+					<label for="" class="col-xs-7 control-label">Decisión:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<small>
+					<label for="" class="col-xs-7 control-label">Determinación:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<small>
+					<label for="" class="col-xs-7 control-label">Gambeta:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<small>
+					<label for="" class="col-xs-7 control-label">Remate:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<small>
+					<label for="" class="col-xs-7 control-label">1er Toque:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<small>
+					<label for="" class="col-xs-7 control-label">Sacrificio:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<small>
+					<label for="" class="col-xs-7 control-label">Atajadas:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<small>
+					<label for="" class="col-xs-7 control-label">Pierna derecha:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<small>
+					<label for="" class="col-xs-7 control-label">Pierna izquierda:</label>
+				</small>
+				<div class="col-xs-4">
+					<%= number_field_tag :edad, nil, in: 0...21, class: "form-control input-sm" %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-offset-9">
+			<button type="submit" class="btn btn-success">Buscar por similitud!</button>
+		</div>
+	</div>
+<% end %>
