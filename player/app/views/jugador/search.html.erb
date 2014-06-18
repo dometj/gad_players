@@ -22,9 +22,9 @@
 		</div>
 		<div class="col-xs-2">
 			<!-- Botón para ir a búsqueda por similitud -->
-			<button type="button" class="btn btn-success" data-toggle="collapse" data-target="#advanced_search_collapsable">
+			<%= link_to jugador_search_by_similarity_path, class: 'btn btn-success', data:{toggle:'tooltip', placement:'bottom'}, title: 'Búsqueda por similitud' do %>
 				<span class="glyphicon glyphicon-screenshot icon-size-large"></span>
-			</button>
+			<% end %>
 		</div>
 	</div>
 </div>
