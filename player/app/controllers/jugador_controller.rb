@@ -3,6 +3,8 @@ class JugadorController < ApplicationController
 
   WARNING_MAS_CARACTERES_Y_LETRAS = 'Por favor ingresá una consulta con más de 2 caracteres y asegurate de utilizar sólo letras.'
   WARNING_SIN_RESULTADOS = 'No encontramos jugadores que coincidan con tu consulta. Por favor, revisá si no tipeaste mal.'
+  WARNING_SIN_SIMILARES = 'No encontramos ningún jugador similar al que consultaste. Que raro!'
+  WARNING_JUGADOR_NO_EXISTE = 'Querés buscar similares a un jugador que no existe en nuestra base de datos!'
 
   # GET /jugador
   # GET /jugador.json
@@ -11,7 +13,6 @@ class JugadorController < ApplicationController
   end
   
   # GET /jugador/search para búsquedas por nombre
-  # POST /jugador/search para búsquedas por similitud
   def search
     # Mensaje de error en nil
     @warning_message = nil
@@ -20,8 +21,7 @@ class JugadorController < ApplicationController
     # TODO controlar esto en las validaciones
     # Separo el string en palabras que tengan más de 2 letras, dejando sólamente letras
     querys = @query_name.scan(/[a-zA-Z][a-zA-Z][a-zA-Z]+/)
-    if querys.empty?
-      # O no ingresó nada o ingresó cualquier cosa menos letras
+    if querys.empty? # O no ingresó nada o ingresó cualquier cosa menos letras
       @warning_message = WARNING_MAS_CARACTERES_Y_LETRAS
     else
       # Busco jugadores por nombre
@@ -30,6 +30,32 @@ class JugadorController < ApplicationController
         @warning_message = WARNING_SIN_RESULTADOS
       end
     end
+  end
+
+  # POST jugador/search_by_similarity Ruta para realizar búsquedas por similitud de atributos
+  def search_by_similarity_attributes
+    # TODO buscar por similitud de atributos
+  end
+
+  # GET jugador/search_by_similarity/:id Ruta para búsquedas por similitud a un jugador
+  def search_by_similarity_id
+    # Mensaje de error en nil
+    @warning_message = nil
+    # Seteo el id del jugador consulta
+    jugador_id = search_by_similarity_id_params
+    # 
+    if Jugador.exists? jugador_id
+      @jugador_consulta = (Jugador.find jugador_id).nombre
+      # Busco jugadores similares al jugador
+      @jugador = search_by_similarity jugador_id
+      if @jugador.empty?
+        @warning_message = WARNING_SIN_SIMILARES
+      end
+    else
+      # No existe el jugador, le erraste en la URL macho
+      @warning_message = WARNING_JUGADOR_NO_EXISTE
+    end
+      render "search"
   end
 
   # GET /jugador/1
@@ -103,6 +129,16 @@ class JugadorController < ApplicationController
       params[:query_name]
     end
 
+    def search_by_similarity_params
+      # TODO Configurar acá la variable params
+      params[:edad]
+    end
+
+    def search_by_similarity_id_params
+      # TODO Configurar acá la variable params
+      params[:id]
+    end
+
     # Búsqueda por nombre que contengan dicho string como substring (no case sensitive)
     def search_by_name querys
       # Inicializo la expresión regular de consulta
@@ -113,5 +149,11 @@ class JugadorController < ApplicationController
       end
       # Busco jugadores que cuyo nombre cumpla con la expresión regular (no case sensitive)
       Jugador.where 'nombre ~* ?', query_regexp
+    end
+
+    # Búsqueda por similitud a partir del id de un jugador en particular
+    def search_by_similarity jugador_id
+      #TODO hacer éste método
+      Jugador.where 'id = ?', jugador_id
     end
 end

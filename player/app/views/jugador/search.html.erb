@@ -21,21 +21,10 @@
 			<% end %>
 		</div>
 		<div class="col-xs-2">
-			<!-- Botón para desplegar las opciones avanzadas -->
+			<!-- Botón para ir a búsqueda por similitud -->
 			<button type="button" class="btn btn-success" data-toggle="collapse" data-target="#advanced_search_collapsable">
 				<span class="glyphicon glyphicon-screenshot icon-size-large"></span>
-			    <span class="glyphicon glyphicon-chevron-down"></span>
 			</button>
-		</div>
-	</div>
-</div>
-<div class="container-fluid">
-	<div class="row">
-		<!-- Esta fila mostrará las opciones avanzadas -->
-		<div class="col-xs-12">
-			<div id="advanced_search_collapsable" class="collapse">
-				<%= render "similarity_search_options" %>
-			</div>
 		</div>
 	</div>
 </div>
@@ -43,11 +32,16 @@
 	<!-- Fila que muestra "Resultados para.. " o "Similares a.. " -->
 	<div class="row">
 		<div class="col-xs-12">
-			<p class="text-muted">Resultados para <strong>"<%= @query_name %>"</strong> :</p>
+			<% if !@jugador_consulta.nil? %>
+				<!-- Si hay un jugador consulta entonces muestro: -->
+				<p class="text-muted">Similares a <strong><%= @jugador_consulta %></strong> :</p>
+			<% else %>
+				<!-- Si no hay un jugador consulta entonces muestro: -->
+				<p class="text-muted">Resultados para <strong>"<%= @query_name %>"</strong> :</p>
+			<% end %>
 		</div>
-		<!-- <p class="text-muted">Similares a <strong>Lionel Messi</strong> :</p> -->
 	</div>
-	<!-- Esta fila muestra los resultados -->
+	<!-- Esta fila muestra los resultados de la búsqueda realizada -->
 	<div class="row">
 		  <div id="resultados">
 			<% if !(@warning_message.nil?) %>

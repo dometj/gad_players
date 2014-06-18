@@ -41,3 +41,7 @@ $grid-float-breakpoint: 0px;
 .margen-inferior-footer {
 	margin-bottom: 200px;
 }
+
+// Clase para que los botones en las cabeceras de los paneles de accordions sean clickeables
+// (y no abran y cierren el accordion)
+.accordion-toggle { display: inline; }
