@@ -1,0 +1,18 @@
+<div class="container">
+	<!-- Fila que contiene el header -->
+	<div class="row">
+		<div class="page-header">
+		  <h1>Búsqueda por similitud</h1>
+		</div>
+	</div>
+	<%= form_tag jugador_search_path, method: "post", class: "form-horizontal" do %>
+		<!-- Renderizo el partial que contiene todas las opciones de búsqueda -->
+		<%= render "similarity_search_options" %>
+		<!-- Fila que contiene el botón de búsqueda por similitud -->
+		<div class="row">
+			<div class="col-xs-offset-8">
+				<%= button_tag "Buscar por similitud!", type: 'submit', class: 'btn btn-success btn-lg'%>
+			</div>
+		</div>
+	<% end %>
+</div>

@@ -1,10 +1,16 @@
 Player::Application.routes.draw do
   
-  # Ruta para búsquedas por nombre
+  # Ruta para ingresar y realizar búsquedas por nombre
   get 'jugador/search', to: 'jugador#search', as: 'jugador_search'
+  
+  # Ruta para ingresar la búsqueda por similitud de atributos
+  get 'jugador/search_by_similarity'
+  
+  # Ruta para realizar búsquedas por similitud de atributos
+  post 'jugador/search_by_similarity', to: 'jugador#search_by_similarity_attributes', as: 'jugador_search_by_similarity_attributes'
 
-  # Ruta para búsquedas por similitud
-  post 'jugador/search', to: 'jugador#search'
+  # Ruta para búsquedas por similitud a un jugador
+  get 'jugador/search_by_similarity/:id', to: 'jugador#search_by_similarity_id', as: 'jugador_search_by_similarity_id'
   
   # Rutas automáticas para jugador
   resources :jugador
