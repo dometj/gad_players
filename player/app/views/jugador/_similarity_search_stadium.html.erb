@@ -8,10 +8,10 @@
 					<div class="panel-body">
 						<div class="form-group">
 							<small>
-								<label for="" class="col-xs-6 control-label">Arquero:</label>
+								<label for="" class="col-xs-6 control-label">GK:</label>
 							</small>
 							<div class="col-xs-6">
-								<%= number_field_tag :arquero, 0, in: 0...21, class: "form-control input-sm" %>
+								<%= f.number_field :arquero, 0, in: 0...21, class: "form-control input-sm" %>
 							</div>
 						</div>
 					</div>
@@ -26,7 +26,7 @@
 								<label for="" class="col-xs-6 control-label">Libero:</label>
 							</small>
 							<div class="col-xs-6">
-							  <%= number_field_tag :libero, 0, in: 0...21, class: "form-control input-sm" %>
+							  <%= f.number_field :libero, 0, in: 0...21, class: "form-control input-sm" %>
 							</div>
 						</div>
 						<div class="form-group">
@@ -34,7 +34,7 @@
 								<label for="" class="col-xs-6 control-label">Lateral derecho:</label>
 							</small>
 							<div class="col-xs-6">
-							  <%= number_field_tag :lateral_derecho, 0, in: 0...21, class: "form-control input-sm" %>
+							  <%= f.number_field :lateral_derecho, 0, in: 0...21, class: "form-control input-sm" %>
 							</div>
 						</div>
 						<div class="form-group">
@@ -42,7 +42,7 @@
 								<label for="" class="col-xs-6 control-label">Defensor central:</label>
 							</small>
 							<div class="col-xs-6">
-							  <%= number_field_tag :defensor_central, 0, in: 0...21, class: "form-control input-sm" %>
+							  <%= f.number_field :defensor_central, 0, in: 0...21, class: "form-control input-sm" %>
 							</div>
 						</div>						
 						<div class="form-group">
@@ -50,7 +50,7 @@
 								<label for="" class="col-xs-6 control-label">Lateral izquierdo:</label>
 							</small>
 							<div class="col-xs-6">
-							  <%= number_field_tag :lateral_izquierdo, 0, in: 0...21, class: "form-control input-sm" %>
+							  <%= f.number_field :lateral_izquierdo, 0, in: 0...21, class: "form-control input-sm" %>
 							</div>
 						</div>						
 					</div>
@@ -65,7 +65,7 @@
 								<label for="" class="col-xs-6 control-label">Carrilero derecho:</label>
 							</small>
 							<div class="col-xs-6">
-							  <%= number_field_tag :carrilero_derecho, 0, in: 0...21, class: "form-control input-sm" %>
+							  <%= f.number_field :carrilero_derecho, 0, in: 0...21, class: "form-control input-sm" %>
 							</div>
 						</div>
 						<div class="form-group">
@@ -73,7 +73,7 @@
 								<label for="" class="col-xs-6 control-label">Carrilero izquierdo:</label>
 							</small>
 							<div class="col-xs-6">
-							  <%= number_field_tag :carrilero_izquierdo, 0, in: 0...21, class: "form-control input-sm" %>
+							  <%= f.number_field :carrilero_izquierdo, 0, in: 0...21, class: "form-control input-sm" %>
 							</div>
 						</div>
 						<div class="form-group">
@@ -81,7 +81,7 @@
 								<label for="" class="col-xs-6 control-label">Mediocampista defensivo:</label>
 							</small>
 							<div class="col-xs-6">
-							  <%= number_field_tag :mediocampista_defensivo, 0, in: 0...21, class: "form-control input-sm" %>
+							  <%= f.number_field :mediocampista_defensivo, 0, in: 0...21, class: "form-control input-sm" %>
 							</div>
 						</div>
 						<div class="form-group">
@@ -89,7 +89,7 @@
 								<label for="" class="col-xs-6 control-label">Mediocampista derecho:</label>
 							</small>
 							<div class="col-xs-6">
-							  <%= number_field_tag :mediocampista_derecho, 0, in: 0...21, class: "form-control input-sm" %>
+							  <%= f.number_field :mediocampista_derecho, 0, in: 0...21, class: "form-control input-sm" %>
 							</div>
 						</div>
 						<div class="form-group">
@@ -97,7 +97,7 @@
 								<label for="" class="col-xs-6 control-label">Mediocampista central:</label>
 							</small>
 							<div class="col-xs-6">
-							  <%= number_field_tag :mediocampista_central, 0, in: 0...21, class: "form-control input-sm" %>
+							  <%= f.number_field :mediocampista_central, 0, in: 0...21, class: "form-control input-sm" %>
 							</div>
 						</div>
 						<div class="form-group">
@@ -105,7 +105,7 @@
 								<label for="" class="col-xs-6 control-label">Mediocampista izquierdo:</label>
 							</small>
 							<div class="col-xs-6">
-							  <%= number_field_tag :mediocampista_izquierdo, 0, in: 0...21, class: "form-control input-sm" %>
+							  <%= f.number_field :mediocampista_izquierdo, 0, in: 0...21, class: "form-control input-sm" %>
 							</div>
 						</div>
 						<div class="form-group">
@@ -113,7 +113,7 @@
 								<label for="" class="col-xs-6 control-label">Mediapunta derecho:</label>
 							</small>
 							<div class="col-xs-6">
-							  <%= number_field_tag :mediapunta_derecho, 0, in: 0...21, class: "form-control input-sm" %>
+							  <%= f.number_field :mediapunta_derecho, 0, in: 0...21, class: "form-control input-sm" %>
 							</div>
 						</div>
 						<div class="form-group">
@@ -121,7 +121,7 @@
 								<label for="" class="col-xs-6 control-label">Mediapunta central:</label>
 							</small>
 							<div class="col-xs-6">
-							  <%= number_field_tag :mediapunta_central, 0, in: 0...21, class: "form-control input-sm" %>
+							  <%= f.number_field :mediapunta_central, 0, in: 0...21, class: "form-control input-sm" %>
 							</div>
 						</div>
 						<div class="form-group">
@@ -129,7 +129,7 @@
 								<label for="" class="col-xs-6 control-label">Mediapunta izquierdo:</label>
 							</small>
 							<div class="col-xs-6">
-							  <%= number_field_tag :mediapunta_izquierdo, 0, in: 0...21, class: "form-control input-sm" %>
+							  <%= f.number_field :mediapunta_izquierdo, 0, in: 0...21, class: "form-control input-sm" %>
 							</div>
 						</div>
 					</div>
@@ -144,7 +144,7 @@
 								<label for="" class="col-xs-6 control-label">Delantero:</label>
 							</small>
 							<div class="col-xs-6">
-							  <%= number_field_tag :delantero, 0, in: 0...21, class: "form-control input-sm" %>
+							  <%= f.number_field :delantero, 0, in: 0...21, class: "form-control input-sm" %>
 							</div>
 						</div>
 					</div>
