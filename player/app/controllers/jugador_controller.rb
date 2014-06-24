@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class JugadorController < ApplicationController
   before_action :set_jugador, only: [:show, :edit, :update, :destroy]
 
