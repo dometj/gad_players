@@ -26,11 +26,13 @@
 				<div class="col-xs-7 no-float">
 					<!-- Fila que contiene los botones de búsqueda -->
 					<div class="row">
+						<!-- Boton Buscar -->
 						<%= button_tag type: 'submit', class: 'col-xs-2 col-xs-offset-3 btn btn-primary', data:{toggle:'tooltip', placement:'bottom'}, title: 'Buscar!' do %>						
 						    <i class="glyphicon glyphicon-search icon-size-large"></i>
 						<% end %>
-						<%= link_to jugador_search_path, class: 'col-xs-2 col-xs-offset-2 btn btn-success', data:{toggle:'tooltip', placement:'bottom'}, title: 'Buscar por similitud!' do %>
-						    <i class="glyphicon glyphicon-screenshot icon-size-large"></i>
+						<!-- Boton buscar por similitud -->
+						<%= link_to jugador_search_by_similarity_path, class: 'col-xs-2 col-xs-offset-2 btn btn-success', data:{toggle:'tooltip', placement:'bottom'}, title: 'Buscar por similitud!' do %>
+						    <span class="glyphicon glyphicon-screenshot icon-size-large"></span>
 						<% end %>
 					</div>
 				</div>
