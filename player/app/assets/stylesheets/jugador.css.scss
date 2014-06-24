@@ -25,6 +25,7 @@ $grid-float-breakpoint: 0px;
 // Clase footer, para definición del footer
 .footer { 
   height: 60px;
+  margin-top: 50px;
 }
 
 // Clase no-float, para que los elementos no floten (y se pueda centrarlos, por ej.)
@@ -44,4 +45,6 @@ $grid-float-breakpoint: 0px;
 
 // Clase para que los botones en las cabeceras de los paneles de accordions sean clickeables
 // (y no abran y cierren el accordion)
-.accordion-toggle { display: inline; }
+.accordion-toggle { 
+	display: inline;
+}
