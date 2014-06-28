@@ -32,9 +32,14 @@ class JugadorController < ApplicationController
     end
   end
 
-  # POST jugador/search_by_similarity Ruta para realizar búsquedas por similitud de atributos
+  # POST jugador/search_by_similarity_attributes Ruta para realizar búsquedas por similitud de atributos
   def search_by_similarity_attributes
     # TODO buscar por similitud de atributos
+  end
+
+  # GET jugador/search_by_similarity Ruta para ingresar búsquedas por similitud de atributos
+  def search_by_similarity
+    @jugador = Jugador.new
   end
 
   # GET jugador/search_by_similarity/:id Ruta para búsquedas por similitud a un jugador

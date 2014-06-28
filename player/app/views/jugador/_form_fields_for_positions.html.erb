@@ -1,0 +1,155 @@
+<div class="row">
+	<div class="panel panel-success">
+		<div class="panel-heading">Posiciones:</div>
+		<div class="panel-body">
+			<div class="col-xs-3">
+				<div class="panel panel-success">
+					<!-- <div class="panel-heading">Arquero</div> -->
+					<div class="panel-body">
+						<div class="form-group">
+							<small>
+								<label for="" class="col-xs-6 control-label">GK:</label>
+							</small>
+							<div class="col-xs-6">
+								<%= f.number_field :arquero, in: 0...21, class: "form-control input-sm" %>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-3">
+				<div class="panel panel-success">
+					<!-- <div class="panel-heading">Defensa</div> -->
+					<div class="panel-body">
+						<div class="form-group">
+							<small>
+								<label for="" class="col-xs-6 control-label">Libero:</label>
+							</small>
+							<div class="col-xs-6">
+							  <%= f.number_field :libero, in: 0...21, class: "form-control input-sm" %>
+							</div>
+						</div>
+						<div class="form-group">
+							<small>
+								<label for="" class="col-xs-6 control-label">Lateral derecho:</label>
+							</small>
+							<div class="col-xs-6">
+							  <%= f.number_field :lateral_derecho, in: 0...21, class: "form-control input-sm" %>
+							</div>
+						</div>
+						<div class="form-group">
+							<small>
+								<label for="" class="col-xs-6 control-label">Defensor central:</label>
+							</small>
+							<div class="col-xs-6">
+							  <%= f.number_field :defensor_central, in: 0...21, class: "form-control input-sm" %>
+							</div>
+						</div>						
+						<div class="form-group">
+							<small>
+								<label for="" class="col-xs-6 control-label">Lateral izquierdo:</label>
+							</small>
+							<div class="col-xs-6">
+							  <%= f.number_field :lateral_izquierdo, in: 0...21, class: "form-control input-sm" %>
+							</div>
+						</div>						
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-3">
+				<div class="panel panel-success">
+					<!-- <div class="panel-heading">Mediocampo</div> -->
+					<div class="panel-body">
+						<div class="form-group">
+							<small>
+								<label for="" class="col-xs-6 control-label">Carrilero derecho:</label>
+							</small>
+							<div class="col-xs-6">
+							  <%= f.number_field :carrilero_derecho, in: 0...21, class: "form-control input-sm" %>
+							</div>
+						</div>
+						<div class="form-group">
+							<small>
+								<label for="" class="col-xs-6 control-label">Carrilero izquierdo:</label>
+							</small>
+							<div class="col-xs-6">
+							  <%= f.number_field :carrilero_izquierdo, in: 0...21, class: "form-control input-sm" %>
+							</div>
+						</div>
+						<div class="form-group">
+							<small>
+								<label for="" class="col-xs-6 control-label">Mediocampista defensivo:</label>
+							</small>
+							<div class="col-xs-6">
+							  <%= f.number_field :mediocampista_defensivo, in: 0...21, class: "form-control input-sm" %>
+							</div>
+						</div>
+						<div class="form-group">
+							<small>
+								<label for="" class="col-xs-6 control-label">Mediocampista derecho:</label>
+							</small>
+							<div class="col-xs-6">
+							  <%= f.number_field :mediocampista_derecho, in: 0...21, class: "form-control input-sm" %>
+							</div>
+						</div>
+						<div class="form-group">
+							<small>
+								<label for="" class="col-xs-6 control-label">Mediocampista central:</label>
+							</small>
+							<div class="col-xs-6">
+							  <%= f.number_field :mediocampista_central, in: 0...21, class: "form-control input-sm" %>
+							</div>
+						</div>
+						<div class="form-group">
+							<small>
+								<label for="" class="col-xs-6 control-label">Mediocampista izquierdo:</label>
+							</small>
+							<div class="col-xs-6">
+							  <%= f.number_field :mediocampista_izquierdo, in: 0...21, class: "form-control input-sm" %>
+							</div>
+						</div>
+						<div class="form-group">
+							<small>
+								<label for="" class="col-xs-6 control-label">Mediapunta derecho:</label>
+							</small>
+							<div class="col-xs-6">
+							  <%= f.number_field :mediapunta_derecho, in: 0...21, class: "form-control input-sm" %>
+							</div>
+						</div>
+						<div class="form-group">
+							<small>
+								<label for="" class="col-xs-6 control-label">Mediapunta central:</label>
+							</small>
+							<div class="col-xs-6">
+							  <%= f.number_field :mediapunta_central, in: 0...21, class: "form-control input-sm" %>
+							</div>
+						</div>
+						<div class="form-group">
+							<small>
+								<label for="" class="col-xs-6 control-label">Mediapunta izquierdo:</label>
+							</small>
+							<div class="col-xs-6">
+							  <%= f.number_field :mediapunta_izquierdo, in: 0...21, class: "form-control input-sm" %>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-3">
+				<div class="panel panel-success">
+					<!-- <div class="panel-heading">Delantero</div> -->
+					<div class="panel-body">
+						<div class="form-group">
+							<small>
+								<label for="" class="col-xs-6 control-label">Delantero:</label>
+							</small>
+							<div class="col-xs-6">
+							  <%= f.number_field :delantero, in: 0...21, class: "form-control input-sm" %>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
