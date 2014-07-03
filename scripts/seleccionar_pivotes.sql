@@ -63,7 +63,10 @@ BEGIN
 END;
 $BODY$ LANGUAGE plpgsql;
 
-ALTER FUNCTION seleccionar_pivotes(k INT, n INT, a INT) OWNER TO proyecto_gad;
+ALTER FUNCTION seleccionar_pivotes(INT, INT, INT) OWNER TO proyecto_gad;
+
+COMMENT ON FUNCTION seleccionar_pivotes(INT, INT, INT) IS 'Implementación del algoritmo de selección incremenal de pivotes. Parámetros: k (cantida de pivotes requeridos),
+n (tamaño de la muestra de potenciales pivotes) y  a (cantidad de pares de prueba para los pivotes)';
 
 -- SELECT seleccionar_pivotes(2, 4, 4)
 
