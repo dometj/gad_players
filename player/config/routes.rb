@@ -4,7 +4,7 @@ Player::Application.routes.draw do
   get 'jugador/search', to: 'jugador#search', as: 'jugador_search'
   
   # Ruta para ingresar la búsqueda por similitud de atributos
-  get 'jugador/search_by_similarity'
+  get 'jugador/search_by_similarity', to: 'jugador#search_by_similarity'
   
   # Ruta para realizar búsquedas por similitud de atributos
   post 'jugador/search_by_similarity', to: 'jugador#search_by_similarity_attributes', as: 'jugador_search_by_similarity_attributes'
