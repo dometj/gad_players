@@ -4,8 +4,8 @@
 		<div class="page-header">
 		  <h1>Búsqueda por similitud</h1>
 		</div>
-	</div>
-	<%= form_for(@jugador, url: jugador_search_by_similarity_attributes_path, html: {class: "form-horizontal"}) do |f| %>
+	</div>	
+	<%= form_for(@jugador_consulta, url: jugador_search_by_similarity_attributes_path, html: {class: "form-horizontal"}) do |f| %>
 		<!-- Renderizo el partial que contiene todas las opciones de búsqueda -->
 		<%= render partial: "form_fields", locals: {f: f} %>
 		<!-- Fila que contiene el botón de búsqueda por similitud -->
