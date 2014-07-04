@@ -4,8 +4,9 @@ firma REAL[];
 -- selecciono los pivotes de prueba
 pivotes CURSOR FOR SELECT atributos_jugador AS pivote_array FROM pivotes ORDER BY numero_pivote;
 -- selecciono todos los jugadores normalizados estan
-jugadores_norm CURSOR FOR SELECT j.id, arrays_jugadores(ARRAY[j.id]) AS jugador_array FROM jugador_norm j;
+jugadores_norm CURSOR FOR SELECT j.id, arrays_jugadores(ARRAY[j.id]) AS jugador_array FROM jugador_norm j WHERE j.id <= 5000;
 BEGIN	
+	DELETE FROM jugador_fqa_full;
 	-- para cada jugador
 	FOR jugador_actual IN jugadores_norm LOOP
 
