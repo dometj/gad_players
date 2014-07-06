@@ -1,27 +1,23 @@
 ﻿CREATE OR REPLACE FUNCTION cargar_jugador_fqa_full() RETURNS VOID AS $$
 DECLARE
-firma REAL[];
--- selecciono los pivotes de prueba
-pivotes CURSOR FOR SELECT atributos_jugador AS pivote_array FROM pivotes ORDER BY numero_pivote;
--- selecciono todos los jugadores normalizados estan
-jugadores_norm CURSOR FOR SELECT j.id, arrays_jugadores(ARRAY[j.id]) AS jugador_array FROM jugador_norm j WHERE j.id <= 5000;
+-- este cursor contiene las firmas, como array, de todos los elementos
+firmas CURSOR FOR SELECT id, array_agg(distancia) AS distancias
+			FROM (SELECT j.id, p.numero_pivote,
+				distancia_jugadores_fqa_full(arrays_jugadores(ARRAY[j.id])::REAL[], p.atributos_jugador::REAL[]) AS distancia
+				FROM pivotes p, jugador_norm j
+				ORDER BY j.id, p.numero_pivote) distancia
+			GROUP BY id;
 BEGIN	
+	-- borro las firmas anteriores
 	DELETE FROM jugador_fqa_full;
-	-- para cada jugador
-	FOR jugador_actual IN jugadores_norm LOOP
-
-		-- creo la firma para este jugador:
-		-- para cada pivote calculo la distancia al jugador
-		FOR pivote IN pivotes LOOP	
-			-- firma[i] := distancia(jugador_actual,pivote):
-			firma := array_append(firma, distancia_jugadores_fqa_full(jugador_actual.jugador_array::REAL[], pivote.pivote_array::REAL[]));
-		END LOOP;
-		
-		-- hago el insert con los datos de la firma
+	
+	-- inserto cada una de las firmas
+	FOR firma IN firmas LOOP
 		INSERT INTO jugador_fqa_full (pivote1, pivote2, pivote3, pivote4, pivote5, pivote6, pivote7, pivote8, pivote9, pivote10, pivote11, pivote12,
-		pivote13, pivote14, pivote15, pivote16, pivote17, pivote18, jugador) VALUES (firma[1], firma[2], firma[3], firma[4], firma[5], firma[6],
-		firma[7], firma[8], firma[9], firma[10], firma[11], firma[12], firma[13], firma[14], firma[15], firma[16], firma[17], firma[18],
-		jugador_actual.id);
+		pivote13, pivote14, pivote15, pivote16, pivote17, pivote18, jugador) VALUES (firma.distancias[1], firma.distancias[2], firma.distancias[3],
+		firma.distancias[4], firma.distancias[5], firma.distancias[6], firma.distancias[7], firma.distancias[8], firma.distancias[9],
+		firma.distancias[10], firma.distancias[11], firma.distancias[12], firma.distancias[13], firma.distancias[14], firma.distancias[15],
+		firma.distancias[16], firma.distancias[17], firma.distancias[18], firma.id);
 	END LOOP;
 END
 $$ LANGUAGE "plpgsql";
