@@ -4,8 +4,8 @@ class JugadorController < ApplicationController
 
   WARNING_MAS_CARACTERES_Y_LETRAS = 'Por favor ingresá una consulta con más de 2 caracteres y asegurate de utilizar sólo letras.'
   WARNING_SIN_RESULTADOS = 'No encontramos jugadores que coincidan con tu consulta. Por favor, revisá si no tipeaste mal.'
-  WARNING_SIN_SIMILARES = 'No encontramos ningún jugador similar al que consultaste. Que raro!'
-  WARNING_JUGADOR_NO_EXISTE = 'Querés buscar similares a un jugador que no existe en nuestra base de datos!'
+  WARNING_SIN_SIMILARES = 'No encontramos ningún jugador similar al que consultaste. Que raro'
+  WARNING_JUGADOR_NO_EXISTE = 'Querés buscar similares a un jugador que no existe en nuestra base de datos'
 
   # GET /jugador
   # GET /jugador.json
@@ -56,7 +56,7 @@ class JugadorController < ApplicationController
     if Jugador.exists? jugador_id
       @jugador_consulta = (Jugador.find jugador_id).nombre
       # Busco jugadores similares al jugador
-      @jugador = search_by_similarity jugador_id
+      @jugador = db_search_by_similarity jugador_id
       if @jugador.empty?
         @warning_message = WARNING_SIN_SIMILARES
       end
@@ -161,7 +161,7 @@ class JugadorController < ApplicationController
     end
 
     # Búsqueda por similitud a partir del id de un jugador en particular
-    def search_by_similarity jugador_id
+    def db_search_by_similarity jugador_id
       #TODO hacer éste método
       Jugador.where 'id = ?', jugador_id
     end
