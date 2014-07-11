@@ -1,0 +1,8 @@
+  <%= form_for(@jugador,html: {class: "form-horizontal"}) do |f| %>
+
+    <%= render partial: "form_fields", locals: {f: f} %>
+
+    <div class="actions">
+      <%= f.submit "Guardar!", class: 'btn btn-success btn-lg' %>
+    </div>
+<% end %>
