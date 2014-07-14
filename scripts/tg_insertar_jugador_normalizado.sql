@@ -74,3 +74,7 @@ CREATE TRIGGER tg_insertar_jugador_normalizado AFTER INSERT
 ON jugador FOR EACH ROW EXECUTE PROCEDURE normalizar_jugador();
 
 ALTER FUNCTION normalizar_jugador() OWNER TO proyecto_gad;
+
+
+COMMENT ON FUNCTION normalizar_jugador() IS 'Inserta el correspondiente jugador en la tabla jugador_norm cuando se inserta un nuevo jugado en la tabla jugador.';
+COMMENT ON TRIGGER tg_insertar_jugador_normalizado ON jugador IS 'Inserta el correspondiente jugador en la tabla jugador_norm cuando se inserta un nuevo jugado en la tabla jugador.';
