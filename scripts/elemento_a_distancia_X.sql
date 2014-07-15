@@ -19,29 +19,24 @@ BEGIN
 	jugadores := '{}';
 	-- Se calcula la firma del jugador iterando sobre el listado de pivotes.
 	contador_loop:=0;
-	FOR pivote IN (SELECT * FROM pivotes) LOOP
+	FOR pivote IN (SELECT * FROM pivotes ORDER BY numero_pivote ASC) LOOP
 			contador_loop := contador_loop + 1;
 			-- firma[i] := distancia(jugador_actual,pivote):
 			firma[contador_loop] := distancia_jugadores_fqa_full(jugador,pivote.atributos_jugador::real[]);
 	END LOOP;
 	-- Se define el intervalo de busqueda a partir de la firma y la distancia.
-		-- Se itera para obtener la cota inferior del intervalo de busqueda.
+		-- Se itera para obtener la cota inferior y la cota superior del intervalo de busqueda.
 		contador_loop:=0;
-		FOR i IN 1..array_upper(firma,1) LOOP
+		FOR i IN 1..array_length(firma,1) LOOP
 			contador_loop := contador_loop + 1;
 			-- firma_inicial := firma - distancia.
 			firma_inicial[contador_loop] := firma[contador_loop] - distancia;
-		END LOOP;
-		-- Se itera para obtener la cota superior del intervalo de busqueda.
-		contador_loop:=0;
-		FOR i IN 1..array_upper(firma,1) LOOP
-			contador_loop := contador_loop + 1;
 			-- firma_final := firma + distancia.
 			firma_final[contador_loop] := firma[contador_loop] + distancia;
 		END LOOP;
 	-- Se busca en la tabla de firmas todas aquellas que se encuentran dentro del intervalo definido.
 	contador_loop := 0;
-	FOR f IN (SELECT jugador_norm FROM jugador_fqa_full firmas 
+	FOR f IN (SELECT firmas.jugador FROM jugador_fqa_full firmas 
 	WHERE firmas.pivote1 BETWEEN firma_inicial[1] AND firma_final[1] 
 	AND firmas.pivote2 BETWEEN firma_inicial[2] AND firma_final[2]
 	AND firmas.pivote3 BETWEEN firma_inicial[3] AND firma_final[3]
@@ -61,7 +56,7 @@ BEGIN
 	AND firmas.pivote17 BETWEEN firma_inicial[17] AND firma_final[17]
 	AND firmas.pivote18 BETWEEN firma_inicial[18] AND firma_final[18]) LOOP
 		contador_loop := contador_loop + 1;
-		jugadores[contador_loop] := f.jugador_norm;
+		jugadores[contador_loop] := f.jugador;
 	END LOOP;
 	
 	RETURN jugadores;
