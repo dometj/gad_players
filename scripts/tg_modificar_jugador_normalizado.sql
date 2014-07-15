@@ -70,3 +70,6 @@ CREATE TRIGGER tg_modificar_jugador_normalizado AFTER UPDATE
 ON jugador FOR EACH ROW EXECUTE PROCEDURE modificar_jugador();
 
 ALTER FUNCTION modificar_jugador() OWNER TO proyecto_gad;
+
+COMMENT ON FUNCTION modificar_jugador() IS 'Modifica el correspondiente jugador de la tabla jugador_norm cuando el jugador de la tabla jugador es modificado.';
+COMMENT ON TRIGGER tg_modificar_jugador_normalizado ON jugador IS 'Modifica el correspondiente jugador de la tabla jugador_norm cuando el jugador de la tabla jugador es modificado.';
