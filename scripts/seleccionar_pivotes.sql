@@ -4,57 +4,58 @@
 -- a: cantidad de pares de prueba para los pivotes
 CREATE OR REPLACE FUNCTION seleccionar_pivotes(k INT, n INT, a INT) RETURNS VOID AS $BODY$
 DECLARE
+	cantidad_atributos INT;
+	-- contienen los pares de prueba. 
+	-- Los pares se forman: p1 = (pares[1], pares[a + 1]);...; pi = (pares[i], pares[a + i]);...; pa = (pares[a], pares[2a])  
 	pares REAL[][];
 	jugador RECORD;
 	par RECORD;
-	suma_distancias REAL;
+	promedio_distancias REAL; -- es el promedio de las distancias máximas de los pares de prueba para un pivote
 	pivote_id INT;
-	pivote REAL[][];
 	mayor_promedio REAL;
-	cantidad_atributos INT;
-	pivotes REAL[][];
-	distancias REAL[];
+	distancias_maximas REAL[]; -- almacena la distancia máxima para cada par de prueba para no tener que volver a calcular la distancia de los pivotes elegidos
+	distancia REAL;
 BEGIN
 	-- pongo todos los pivotes en 0 para borrar los anteriores
 	UPDATE jugador_norm 
 	SET numero_pivote = 0;
+	
 	-- genero un array de jugadores para usar como pares de prueba
-	pares := array_de_jugadores(a); 
-	pivotes := '{}';
-	-- Calculo la cantidad de atributos de la tabla jugador_norm descontando el id, la fk y el numero_pivote para poder indexar el array
-	SELECT (COUNT(column_name)-3) INTO cantidad_atributos FROM information_schema.columns WHERE table_name = 'jugador_norm';
+	pares := array_de_jugadores((a*2)::INT);
+	cantidad_atributos := array_length(pares,2);
+	RAISE NOTICE 'CANTIDAD DE ATRIBUTOS %', cantidad_atributos;
+
+	-- inicializo las distancias máximas para cada par en 0
+	distancias_maximas := array_fill(0, ARRAY[a]);
 	
 	FOR i IN 1..k LOOP -- para cada uno de los pivotes requeridos
-		suma_distancias := 0;
 		mayor_promedio := 0;
 		
 		FOR jugador IN (SELECT j.* FROM muestra(n) j) LOOP  -- genero una muestra pseudoaleatoria de n elementos
 			FOR j IN 1..a LOOP -- por cada par de prueba
-				IF (i > 1) THEN -- si ya selleccione algún pivote
-					FOR k IN 1..array_length(pivotes, 1) LOOP -- por cada uno de los pivotes anteriores
-						-- calculo la diferencia entre las firmas del par respecto de los pivotes anteriores
-						distancias := array_append(distancias, (distancia_jugadores_fqa_full(pivotes[k][1:cantidad_atributos],
-								pares[j][1:cantidad_atributos]) -
-								distancia_jugadores_fqa_full(pivotes[k][1:cantidad_atributos],
-								pares[j+a][1:cantidad_atributos])));
-					END LOOP;
-				END IF;
+				
 				-- calculo la diferencia entre las firmas del par respecto del potencial pivote
-				distancias := array_append(distancias, (distancia_jugadores_fqa_full(jugador.atributos, pares[j][1:cantidad_atributos])
-							- distancia_jugadores_fqa_full(jugador.atributos, pares[j+a][1:cantidad_atributos])));
-				-- sumo la distancia máxima entre las firmas del par
-				suma_distancias = suma_distancias + maximo(distancias::NUMERIC[]); 
-				distancias := '{}';
+				distancia := distancia_jugadores_fqa_full(jugador.atributos, pares[j][1:cantidad_atributos])
+							- distancia_jugadores_fqa_full(jugador.atributos, pares[j+a][1:cantidad_atributos]);
+
+				-- si la distancia actual es mayor que la distancia máxima actual para el par, la actualizo
+				IF(distancia > distancias_maximas[j]) THEN
+					distancias_maximas[j] := distancia;
+				END IF;
+								
 			END LOOP;
+
+			-- calculo el promedio de las distancias máximas para el posible pivote
+			SELECT avg(distancias.*)::REAL INTO promedio_distancias
+			FROM unnest(distancias_maximas) distancias;
+			
 			-- si el promedio de este elemento de la muestra es mayor que el mayor hasta el momento
-			IF ((suma_distancias/a) >= mayor_promedio) THEN
-				mayor_promedio = suma_distancias/a;
-				pivote_id = jugador.id;
-				pivote := ARRAY[jugador.atributos];
+			IF (promedio_distancias >= mayor_promedio) THEN
+				mayor_promedio = promedio_distancias; -- actualizo el mayor promedio
+				pivote_id = jugador.id; -- indico el pivote elegido hasta el momento
 			END IF;
 		END LOOP;
-		-- guardo los pivotes en un array para poder comparar con los nuevos
-		pivotes := array_cat(pivotes, pivote); 
+		 
 		-- indico el nuevo pivote i
 		UPDATE jugador_norm 
 		SET numero_pivote = i
