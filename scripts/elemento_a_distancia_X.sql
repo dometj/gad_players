@@ -55,8 +55,10 @@ BEGIN
 	AND firmas.pivote16 BETWEEN firma_inicial[16] AND firma_final[16]
 	AND firmas.pivote17 BETWEEN firma_inicial[17] AND firma_final[17]
 	AND firmas.pivote18 BETWEEN firma_inicial[18] AND firma_final[18]) LOOP
-		contador_loop := contador_loop + 1;
-		jugadores[contador_loop] := f.jugador;
+		IF (distancia_jugadores_fqa_full(jugador,(SELECT arrays_jugadores(ARRAY[f.jugador]))) <= distancia) THEN
+			contador_loop := contador_loop + 1;
+			jugadores[contador_loop] := f.jugador;
+		END IF;
 	END LOOP;
 	
 	RETURN jugadores;
