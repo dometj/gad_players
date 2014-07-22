@@ -9,7 +9,7 @@ DECLARE
 BEGIN
 	SELECT MIN(id) INTO min FROM jugador_norm; -- determino el mínimo id de los jugadores
 	SELECT MAX(id) INTO max FROM jugador_norm; -- determino el máximo id de los jugadores
-	jugadores_ids := random_in_range(min, max, (cantidad*2)); -- determino los id de los jugadores a devolver
+	jugadores_ids := random_in_range(min, max, cantidad); -- determino los id de los jugadores a devolver
 	arrays := '{}';
 	-- armo el array de array con los jugadores
 	FOR jugador IN (SELECT ARRAY[j.*] AS valores FROM arrays_jugadores(jugadores_ids) j) LOOP
