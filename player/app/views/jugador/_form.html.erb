@@ -1,6 +1,11 @@
-  <%= form_for(@jugador,html: {class: "form-horizontal"}) do |f| %>
-
-    <%= render partial: "form_fields", locals: {f: f} %>
+<%= form_for(@jugador,html: {class: "form-horizontal"}) do |f| %>
+	
+	<!-- Renderizo identidad del jugador: -->
+	<!-- nombre, pais, club, posicion (strings), habilidad, altura y peso -->
+    <%= render partial: "form_fields_for_identity", locals: {f: f} %>
+	    
+	<!-- Renderizo las posiciones y diferentes condiciones del jugador -->    
+    <%= render partial: "form_fields_for_conditions", locals: {f: f} %>
 
     <div class="actions">
       <%= f.submit "Guardar!", class: 'btn btn-success btn-lg' %>

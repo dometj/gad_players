@@ -1,0 +1,59 @@
+<div class="row">
+	<div class="panel panel-success">
+		<div class="panel-heading">Identidad:</div>
+		<div class="panel-body">
+			<div class="col-xs-8">
+				<div class="form-group">
+					<small>
+						<label for="" class="col-xs-3 control-label">Nombre:</label>
+					</small>
+					<div class="col-xs-9">
+						<%= f.text_field :nombre, class: "form-control input-sm" %>
+					</div>
+				</div>
+				<div class="form-group">
+					<small>
+						<label for="" class="col-xs-3 control-label">País:</label>
+					</small>
+					<div class="col-xs-9">
+						<%= f.text_field :pais, class: "form-control input-sm" %>
+					</div>
+				</div>
+				<div class="form-group">
+					<small>
+						<label for="" class="col-xs-3 control-label">Club:</label>
+					</small>
+					<div class="col-xs-9">
+						<%= f.text_field :club, class: "form-control input-sm" %>
+					</div>
+				</div>
+				<div class="form-group">
+					<small>
+						<label for="" class="col-xs-3 control-label">Posiciones:</label>
+					</small>
+					<div class="col-xs-9">
+						<%= f.text_field :posicion, class: "form-control input-sm" %>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-4">
+				<div class="form-group">
+					<small>
+						<label for="" class="col-xs-6 control-label">Altura (cm):</label>
+					</small>
+					<div class="col-xs-6">
+						<%= f.number_field :altura, class: "form-control input-sm" %>
+					</div>
+				</div>
+				<div class="form-group">
+					<small>
+						<label for="" class="col-xs-6 control-label">Peso (kg):</label>
+					</small>
+					<div class="col-xs-6">
+						<%= f.number_field :peso, class: "form-control input-sm" %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
