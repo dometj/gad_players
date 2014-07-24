@@ -7,7 +7,7 @@
 	</div>	
 	<%= form_for(@jugador_consulta, url: jugador_search_by_similarity_attributes_path, html: {class: "form-horizontal"}) do |f| %>
 		<!-- Renderizo el partial que contiene todas las opciones de búsqueda -->
-		<%= render partial: "form_fields", locals: {f: f} %>
+		<%= render partial: "form_fields_for_conditions", locals: {f: f} %>
 		<!-- Fila que contiene el botón de búsqueda por similitud -->
 		<div class="row">
 			<div class="col-xs-offset-8">
