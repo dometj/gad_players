@@ -9,13 +9,11 @@ class JugadorController < ApplicationController
   # GET /jugador
   # GET /jugador.json
   def index
-    logger.debug "Entró al index"
   end
 
   # GET /jugador/search_by_similarity Ruta para ingresar búsquedas por similitud de atributos
   def search_by_similarity
     @jugador_consulta = Jugador.new
-    logger.debug "ENTROOOOOOOOO0000000OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"
     render "search_by_similarity"
   end
   
@@ -42,7 +40,7 @@ class JugadorController < ApplicationController
   # POST jugador/search_by_similarity_attributes Ruta para realizar búsquedas por similitud de atributos
   def search_by_similarity_attributes
     # TODO buscar por similitud de atributos
-    logger.debug "Entró al otro similarity"
+    
   end
 
   # GET jugador/search_by_similarity/:id Ruta para búsquedas por similitud a un jugador
@@ -69,6 +67,7 @@ class JugadorController < ApplicationController
   # GET /jugador/1
   # GET /jugador/1.json
   def show
+    redirect_to jugador_index_path
   end
 
   # GET /jugador/new
