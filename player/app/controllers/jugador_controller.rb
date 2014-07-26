@@ -1,6 +1,7 @@
 # encoding: UTF-8
 class JugadorController < ApplicationController
   before_action :set_jugador, only: [:show, :edit, :update, :destroy]
+  #include JugadorHelper
 
   WARNING_MAS_CARACTERES_Y_LETRAS = 'Por favor ingresá una consulta con más de 2 caracteres y asegurate de utilizar sólo letras.'
   WARNING_SIN_RESULTADOS = 'No encontramos jugadores que coincidan con tu consulta. Por favor, revisá si no tipeaste mal.'
@@ -40,8 +41,21 @@ class JugadorController < ApplicationController
 
   # POST jugador/search_by_similarity_attributes Ruta para realizar búsquedas por similitud de atributos
   def search_by_similarity_attributes
-    # TODO buscar por similitud de atributos
-    
+    # Mensaje de error en nil
+    @warning_message = nil
+    # Obtengo el jugador consultado
+    jugador = Jugador.new jugador_params
+    logger.debug '----------------------------------------------------------------------------------------------'
+    logger.debug jugador
+    logger.debug '----------------------------------------------------------------------------------------------'
+    # String que muestro sobre qué consulta se realizó
+    @jugador_consulta = 'Jugador personalizado'
+    # Busco jugadores similares al jugador
+    @jugador = db_search_by_similarity_attributes jugador
+    if @jugador.empty?
+      @warning_message = WARNING_SIN_SIMILARES
+    end
+    render "search"
   end
 
   # GET jugador/search_by_similarity/:id Ruta para búsquedas por similitud a un jugador
@@ -50,7 +64,7 @@ class JugadorController < ApplicationController
     @warning_message = nil
     # Seteo el id del jugador consulta
     jugador_id = search_by_similarity_id_params
-    # 
+    # Si existe busco los similares..
     if Jugador.exists? jugador_id
       @jugador_consulta = (Jugador.find jugador_id).nombre
       # Busco jugadores similares al jugador
@@ -121,12 +135,12 @@ class JugadorController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    # setea un jugador a partir del parametro id
     def set_jugador
       @jugador = Jugador.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    # Parsea los parámetros de un jugador
     def jugador_params
       params.require(:jugador).permit(:nombre, :pais, :club, :posicion, :edad, :aceleracion, :agresividad, :agilidad, :anticipacion, :balance, :valentia, :compostura, :concentracion, :corners, :creatividad, :centro, :decision, :determinacion, :gambeta, :remate, :primer_toque, :instinto, :cabezazo, :influencia, :salto, :tiro_lejano, :pase_largo, :marca, :forma_fisica_natural, :juego_sin_pelota, :velocidad, :pases, :penales, :posicionamiento, :tiros_libres, :resistencia, :fuerza, :entrada, :trabajo_en_equipo, :tecnica, :sacrificio, :porcentaje_atajadas, :unique_id, :pierna_derecha, :pierna_izquierda, :arquero, :libero, :lateral_derecho, :defensor_central, :lateral_izquierdo, :carrilero_derecho, :carrilero_izquierdo, :mediocampista_defensivo, :mediocampista_derecho, :mediocampista_central, :mediocampista_izquierdo, :mediapunta_derecho, :mediapunta_central, :mediapunta_izquierdo, :delantero, :fr, :ts_rating, :fs_rating, :dc_rating, :habilidad_actual, :altura, :peso)
     end
@@ -135,11 +149,6 @@ class JugadorController < ApplicationController
     def search_params
       # TODO Configurar acá la variable params
       params[:query_name]
-    end
-
-    def search_by_similarity_params
-      # TODO Configurar acá la variable params
-      params[:edad]
     end
 
     def search_by_similarity_id_params
@@ -161,7 +170,22 @@ class JugadorController < ApplicationController
 
     # Búsqueda por similitud a partir del id de un jugador en particular
     def db_search_by_similarity jugador_id
-      #TODO hacer éste método
-      Jugador.where 'id = ?', jugador_id
+      #armo el string SQL para la consulta
+      string_consulta = 'SELECT * FROM jugador j WHERE j.id in (SELECT unnest(n_vecinos_mas_cercanos((arrays_jugadores(ARRAY['+jugador_id+'])),1)) AS id);'
+
+      #realizo la consulta
+      jugadores_resultantes = Jugador.find_by_sql string_consulta
+    end
+
+    # Búsqueda por similitud a partir de los atributos de un jugador ficticio
+    def db_search_by_similarity_attributes jugador
+      # convierto el jugador a un string con el formato de arrays de postgresql
+      jugador_string = toString jugador
+
+      #armo el string SQL para la consulta      
+      string_consulta = 'SELECT * FROM jugador j WHERE j.id in (SELECT unnest(n_vecinos_mas_cercanos((arrays_jugadores("'+jugador_string+'")),1)) AS id);'
+
+      #realizo la consulta
+      jugadores_resultantes = Jugador.find_by_sql string_consulta
     end
 end
