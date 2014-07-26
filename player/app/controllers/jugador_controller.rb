@@ -1,7 +1,7 @@
 # encoding: UTF-8
 class JugadorController < ApplicationController
   before_action :set_jugador, only: [:show, :edit, :update, :destroy]
-  #include JugadorHelper
+  include JugadorHelper
 
   WARNING_MAS_CARACTERES_Y_LETRAS = 'Por favor ingresá una consulta con más de 2 caracteres y asegurate de utilizar sólo letras.'
   WARNING_SIN_RESULTADOS = 'No encontramos jugadores que coincidan con tu consulta. Por favor, revisá si no tipeaste mal.'
@@ -182,8 +182,12 @@ class JugadorController < ApplicationController
       # convierto el jugador a un string con el formato de arrays de postgresql
       jugador_string = toString jugador
 
+      logger.debug '----------------------------------------------------------------------------------------------'
+      logger.debug jugador_string
+      logger.debug '----------------------------------------------------------------------------------------------'
+
       #armo el string SQL para la consulta      
-      string_consulta = 'SELECT * FROM jugador j WHERE j.id in (SELECT unnest(n_vecinos_mas_cercanos((arrays_jugadores("'+jugador_string+'")),1)) AS id);'
+      string_consulta = 'SELECT * FROM jugador j WHERE j.id in (SELECT unnest(n_vecinos_mas_cercanos('+jugador_string+',1)) AS id);'
 
       #realizo la consulta
       jugadores_resultantes = Jugador.find_by_sql string_consulta

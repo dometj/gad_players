@@ -1,7 +1,7 @@
 module JugadorHelper
 	def toString jugador
 		# comienza el array string
-		jugador_string = '{'
+		jugador_string = 'ARRAY['
 
 		# atributo 
 		jugador_string += jugador.edad.to_s + ','
@@ -169,7 +169,7 @@ module JugadorHelper
 		jugador_string += jugador.delantero.to_s
 
 		# finalizo el array string
-		jugador_string = '}'
+		jugador_string += ']'
 		
 		jugador_string
 	end
