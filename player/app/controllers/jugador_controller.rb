@@ -186,8 +186,8 @@ class JugadorController < ApplicationController
       logger.debug jugador_string
       logger.debug '----------------------------------------------------------------------------------------------'
 
-      #armo el string SQL para la consulta      
-      string_consulta = 'SELECT * FROM jugador j WHERE j.id in (SELECT unnest(n_vecinos_mas_cercanos('+jugador_string+',1)) AS id);'
+      #armo el string SQL para la consulta
+      string_consulta = 'SELECT * FROM jugador j WHERE j.id in (SELECT unnest(n_vecinos_mas_cercanos((normalizar('+jugador_string+')),1)) AS id);'
 
       #realizo la consulta
       jugadores_resultantes = Jugador.find_by_sql string_consulta
