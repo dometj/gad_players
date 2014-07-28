@@ -1,7 +1,7 @@
 ﻿CREATE OR REPLACE FUNCTION normalizar(jugador REAL[]) RETURNS REAL[] AS $BODY$
 BEGIN
 	jugador[1] := (jugador[1] - 12) * 100 /  (60 - 12); -- normalizo la edad
-	FOR i IN 2..array_length(jugador) LOOP
+	FOR i IN 2..array_length(jugador, 1) LOOP
 		IF(i <> 38) THEN -- si no es el porcentaje de atajadas (este atributo ya esta en escala de 100)
 		jugador[i] := (jugador[i])*100 / 20;
 		END IF;
