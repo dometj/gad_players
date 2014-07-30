@@ -32,8 +32,8 @@ class JugadorController < ApplicationController
       @warning_message = WARNING_MAS_CARACTERES_Y_LETRAS
     else
       # Busco jugadores por nombre
-      @jugador = search_by_name querys
-      if @jugador.empty?
+      @jugadores_con_distancia = search_by_name querys
+      if @jugadores_con_distancia.empty?
         @warning_message = WARNING_SIN_RESULTADOS
       end
     end
@@ -45,14 +45,11 @@ class JugadorController < ApplicationController
     @warning_message = nil
     # Obtengo el jugador consultado
     jugador = Jugador.new jugador_params
-    logger.debug '----------------------------------------------------------------------------------------------'
-    logger.debug jugador
-    logger.debug '----------------------------------------------------------------------------------------------'
     # String que muestro sobre qué consulta se realizó
     @jugador_consulta = 'Jugador personalizado'
     # Busco jugadores similares al jugador
-    @jugador = db_search_by_similarity_attributes jugador
-    if @jugador.empty?
+    @jugadores_con_distancia = db_search_by_similarity_attributes jugador
+    if @jugadores_con_distancia.empty?
       @warning_message = WARNING_SIN_SIMILARES
     end
     render "search"
@@ -68,8 +65,8 @@ class JugadorController < ApplicationController
     if Jugador.exists? jugador_id
       @jugador_consulta = (Jugador.find jugador_id).nombre
       # Busco jugadores similares al jugador
-      @jugador = db_search_by_similarity jugador_id
-      if @jugador.empty?
+      @jugadores_con_distancia = db_search_by_similarity jugador_id
+      if @jugadores_con_distancia.empty?
         @warning_message = WARNING_SIN_SIMILARES
       end
     else
@@ -171,10 +168,26 @@ class JugadorController < ApplicationController
     # Búsqueda por similitud a partir del id de un jugador en particular
     def db_search_by_similarity jugador_id
       #armo el string SQL para la consulta
-      string_consulta = 'SELECT * FROM jugador j WHERE j.id in (SELECT unnest(n_vecinos_mas_cercanos((arrays_jugadores(ARRAY['+jugador_id+'])),1)) AS id);'
+      string_consulta = 'SELECT busqueda_por_similitud_by_id('+jugador_id+');'
+      
+      #realizo la consulta (devuelve pares de id-distancia)
+      id_jugadores_resultantes_con_distancia = ActiveRecord::Base.connection.send(:select_all, string_consulta).rows
 
-      #realizo la consulta
-      jugadores_resultantes = Jugador.find_by_sql string_consulta
+      # creo la lista de jugadores y distancia
+      lista_jugadores_con_distancia = Array.new
+      es_jugador = true
+
+      id_jugadores_resultantes_con_distancia.each do | jugador_distancia |
+        if es_jugador
+          jugador = Jugador.find jugador_distancia
+          es_jugador = false
+        else
+          lista_jugadores_con_distancia.push([jugador, jugador_distancia])
+          es_jugador = true
+        end
+      end
+
+      lista_jugadores_con_distancia
     end
 
     # Búsqueda por similitud a partir de los atributos de un jugador ficticio
@@ -183,9 +196,25 @@ class JugadorController < ApplicationController
       jugador_string = toString jugador
 
       #armo el string SQL para la consulta
-      string_consulta = 'SELECT * FROM jugador j WHERE j.id in (SELECT unnest(n_vecinos_mas_cercanos((normalizar('+jugador_string+')),1)) AS id);'
+      string_consulta = 'SELECT busqueda_por_similitud_atributos('+jugador_string+');'
 
-      #realizo la consulta
-      jugadores_resultantes = Jugador.find_by_sql string_consulta
+      #realizo la consulta (devuelve pares de id-distancia)
+      id_jugadores_resultantes_con_distancia = ActiveRecord::Base.connection.send(:select_all, string_consulta).rows
+
+      # creo la lista de jugadores y distancia
+      lista_jugadores_con_distancia = Array.new
+      es_jugador = true
+
+      id_jugadores_resultantes_con_distancia.each do | jugador_distancia |
+        if es_jugador
+          jugador = Jugador.find jugador_distancia
+          es_jugador = false
+        else
+          lista_jugadores_con_distancia.push([jugador, jugador_distancia])
+          es_jugador = true
+        end
+      end
+
+      lista_jugadores_con_distancia
     end
 end
