@@ -1,11 +1,21 @@
 <div class="panel-group" id="accordion">
-    <% @jugador.each do |jugador| %>
+    <% @jugadores_con_distancia.each do |jugador_con_distancia| %>
+    <% if !@jugador_consulta.nil? %>
+		<!-- Si hay un jugador consulta entonces: -->
+    	<% jugador = jugador_con_distancia[0][0] %>
+	<% else %>
+    	<% jugador = jugador_con_distancia %>
+	<% end %>
 	  <div class="panel panel-default">
 	    <!-- Cabecera del jugador -->
 	    <div class="panel-heading">
 			<div class="row">
 			    <div data-toggle="collapse" data-parent="#accordion" href="#jugador_details_collapsable_<%= jugador.id %>">
 			        <div class="col-xs-4">
+			        	<% if !@jugador_consulta.nil? %>
+							<!-- Si hay un jugador consulta entonces muestro: -->
+			        		<strong><%= jugador_con_distancia[1][0] %></strong> -
+						<% end %>
 			        	<span class="glyphicon glyphicon-user"></span>
 			        	<strong><%= jugador.nombre %></strong>
 			        </div>
