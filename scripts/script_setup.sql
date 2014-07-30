@@ -125,3 +125,8 @@ CONSTRAINT pk_jugador_fqa_full PRIMARY KEY (id));
 ALTER TABLE jugador_fqa_full OWNER TO proyecto_gad;
 
 COMMENT ON TABLE jugador_fqa_full IS 'Esta tabla contiene las firmas de todos los jugadores.'
+
+-- creo un índice sobre cada elemento de las firmas para optimizar las búsquedas en el FQA
+CREATE INDEX idx_fqa
+	ON jugador_fqa_full USING btree (pivote1, pivote2, pivote3, pivote4, pivote5, pivote6, pivote7, pivote8, pivote9,
+					pivote10, pivote11, pivote12, pivote13, pivote14, pivote15, pivote16, pivote17, pivote18);

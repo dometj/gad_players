@@ -2,18 +2,17 @@
 -- Parámetros:
 	--jugador: elemento dado para realizar la busqueda a partir de el.
 	--N: cantidad de elementos parecidos que se necesitan encontrar.
-	
-CREATE OR REPLACE FUNCTION n_vecinos_mas_cercanos(jugador REAL[],N INTEGER) RETURNS INTEGER[] AS $BODY$
+DROP FUNCTION n_vecinos_mas_cercanos(jugador REAL[],N INTEGER);
+CREATE OR REPLACE FUNCTION n_vecinos_mas_cercanos(jugador REAL[],N INTEGER) RETURNS REAL[][] AS $BODY$
 DECLARE
-	jugadores INTEGER[];
+	jugadores REAL[][];
 	distancia REAL;
-	
 BEGIN
 	jugadores := '{}';
-	distancia := 0;
+	distancia := 50;
 	-- Mientras "jugadores" posea una cantidad menor a N de elementos, aumento en 1 la distancia y vuelvo a llamar a elemento_a_distancia_X con la nueva distancia.
 	LOOP
-		distancia := distancia + 1;
+		distancia := distancia + 2;
 		-- Llamo a elemento_a_distancia_X pasandole el jugador y la distancia inicial. Asigno el resultado a "jugadores"
 		jugadores := elemento_a_distancia_X(jugador,distancia);
 		IF (array_length(jugadores, 1) > N) THEN
