@@ -173,9 +173,11 @@ class JugadorController < ApplicationController
       #realizo la consulta (devuelve pares de id-distancia)
       id_jugadores_resultantes_con_distancia = ActiveRecord::Base.connection.send(:select_all, string_consulta).rows
 
+
       # creo la lista de jugadores y distancia
       lista_jugadores_con_distancia = Array.new
       es_jugador = true
+      jugador = nil
 
       id_jugadores_resultantes_con_distancia.each do | jugador_distancia |
         if es_jugador

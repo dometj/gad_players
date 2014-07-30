@@ -1,7 +1,8 @@
 ﻿CREATE OR REPLACE FUNCTION busqueda_por_similitud_by_id(jugador_id INTEGER) RETURNS SETOF REAL AS $BODY$
-
 BEGIN
-	RETURN QUERY SELECT unnest(n_vecinos_mas_cercanos((arrays_jugadores(ARRAY[jugador_id])),1)) AS id;	
-	--RETURN query select unnest(ARRAY[[1223,1.3],[111123,2],[33044,3]]::REAL[]);
+	RETURN QUERY SELECT unnest(n_vecinos_mas_cercanos((arrays_jugadores(ARRAY[jugador_id])),1));
 END;
 $BODY$ LANGUAGE plpgsql;
+
+select busqueda_por_similitud_by_id(1)
+
